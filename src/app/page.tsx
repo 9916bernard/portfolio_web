@@ -2,10 +2,10 @@
 
 import './globals.css';
 import React from 'react';
-import Navbar from "/Users/sungheonlee/Documents/GitHub/portfolio/components/Navbar";
-import Sidebar from "/Users/sungheonlee/Documents/GitHub/portfolio/components/Sidebar";
-import Section from "/Users/sungheonlee/Documents/GitHub/portfolio/components/Section";
-import { useScrollSpy } from "/Users/sungheonlee/Documents/GitHub/portfolio/hooks/useScrollSpy";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
+import Section from "../../components/Section";
+import { useScrollSpy } from "../../hooks/useScrollSpy";
 
 export default function Home() {
   const sectionIds = ['intro', 'projects', 'experiences', 'awards', 'contact'];
