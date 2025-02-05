@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000; /* 흰색 -> 검정색으로 변경 */
+  --foreground: #ededed; /* 배경이 검정이면 글씨는 밝은색이 좋습니다. */
 }
 
+/* 필요에 따라 다크 모드 미디어 쿼리를 제거하거나 수정할 수 있습니다. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -19,3 +20,4 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
