@@ -7,7 +7,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
-  const offsetFromBottom = 450;
+  const offsetFromBottom = 550;
   const [barPosition, setBarPosition] = useState(0);
 
   useEffect(() => {
@@ -23,15 +23,15 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
   }, [offsetFromBottom]);
 
   const getLinkClass = (sectionId: string) =>
-    `border border-white px-4 py-2 w-28 text-center rounded transition ${
+    `border border-white px-4 py-3 w-40 text-center rounded transition font-bold ${
       activeSection === sectionId
-        ? 'bg-blue-500 text-white shadow-lg'
+        ? 'bg-yellow-500 text-white shadow-lg'
         : 'text-white hover:bg-white hover:text-black'
     }`;
 
   return (
     <div
-      className="absolute right-0 transition-all duration-700 ease-out flex flex-col space-y-4 items-center z-50"
+      className="absolute right-10 transition-all duration-700 ease-out flex flex-col space-y-4 items-center z-50"
       style={{ top: `${barPosition}px` }}
     >
       <a href="#intro" className={getLinkClass('intro')}>
