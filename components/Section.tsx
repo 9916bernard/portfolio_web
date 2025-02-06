@@ -61,8 +61,9 @@ const Section = ({ id, title, content }: SectionProps) => {
       )}
 
       {/* 기본 섹션 컨텐츠 */}
-      {/* <h2 className="text-3xl font-bold mb-4 relative z-20">{title}</h2>
-      <p className="relative z-20">{content}</p> */}
+      <h2 className="hidden text-1xl font-bold mb-4 relative z-20">{title}</h2>
+<p className="hidden relative z-20">{content}</p>
+
     </section>
   );
 };
