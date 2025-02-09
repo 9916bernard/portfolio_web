@@ -7,7 +7,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
-  const offsetFromBottom = 550;
+  const offsetFromBottom = 900;
   const [barPosition, setBarPosition] = useState(0);
 
   useEffect(() => {
@@ -31,7 +31,21 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
 
   return (
     <div
-      className="absolute right-10 transition-all duration-700 ease-out flex flex-col space-y-4 items-center z-50"
+      className="
+        absolute 
+        right-10 
+        transition-all 
+        duration-700 
+        ease-out 
+        flex 
+        flex-col 
+        space-y-4 
+        items-center 
+        z-50 
+
+        opacity-20      /* 기본 투명도 50% */
+        hover:opacity-100 /* 마우스 hover 시 100%로 */
+      "
       style={{ top: `${barPosition}px` }}
     >
       <a href="#intro" className={getLinkClass('intro')}>
