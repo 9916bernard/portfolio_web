@@ -98,7 +98,7 @@ const Section = ({ id, title, content }: SectionProps) => {
               }}
             >
               <p>
-                Hello! I'm a{" "}
+                Hello! I&apos;m a{" "}
                 <span className="text-yellow-400 font-bold">
                   Software Developer
                 </span>{" "}
@@ -119,7 +119,7 @@ const Section = ({ id, title, content }: SectionProps) => {
                 value open communication and shared success.
               </p>
               <p className="mt-2">
-                Plus, I'm not afraid to{" "}
+                Plus, I&apos;m not afraid to{" "}
                 <span className="text-yellow-400 font-bold">innovate</span>
                 —constantly pushing boundaries to discover fresh ideas and
                 solutions.
