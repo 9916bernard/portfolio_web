@@ -5,7 +5,7 @@ import React from "react";
 const ContactSection = () => {
   return (
     <section id="contact" className="relative min-h-[80vh] flex flex-col items-center justify-center bg-black text-white">
-      <h2 className="text-5xl font-bold text-yellow-400">Let's Connect</h2>
+      <h2 className="text-5xl font-bold text-yellow-400">Let&apos;s Connect</h2>
       <p className="text-gray-400 mt-4 text-xl text-center max-w-2xl">
         Have a project in mind or want to collaborate? Feel free to reach out!
       </p>
