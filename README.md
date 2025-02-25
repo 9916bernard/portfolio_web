@@ -1,3 +1,39 @@
+🚀 Personal Portfolio Website - In Development
+
+This is my personal portfolio website, built using Next.js and currently under development. I am handling both the design and implementation independently, experimenting with dynamic scrolling, interactive UI elements, and smooth navigation.
+
+💡 Tech Stack:
+
+Next.js (bootstrapped with create-next-app)
+
+React for UI components
+
+Tailwind CSS for styling
+
+Vercel for deployment
+
+🎨 Current Focus:
+
+Refining scroll-based animations & section transitions
+
+Enhancing UI responsiveness & accessibility
+
+Implementing a seamless navigation experience
+
+🌍 Future Plans:
+
+Adding project showcases & case studies
+
+Integrating a blog & writing section
+
+Implementing a contact form with email API
+
+🔨 Work in Progress – Updates Coming Soon!
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
