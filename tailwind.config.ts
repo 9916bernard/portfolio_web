@@ -6,6 +6,9 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "text-yellow-400",
+  ],
   theme: {
     extend: {
       colors: {

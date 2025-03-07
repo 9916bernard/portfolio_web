@@ -3,11 +3,23 @@
 import Link from "next/link";
 import psu_image from "../../assets/image/psu_image.jpg";
 
+// 새로운 프로젝트 목록
 const projects = [
-  { id: "avt",      title: "AVT",      description: "Autonomous Vehicle Team project at Penn State." },
-  { id: "plo",      title: "PLO",      description: "Project related to predictive learning optimization." },
-  { id: "datafest", title: "DATAFEST", description: "Data analysis competition experience." },
-  { id: "others",   title: "Others",   description: "Other notable projects and collaborations." },
+  {
+    id: "cosmic",
+    title: "Cosmic Survivor",
+    description: "Embark on a thrilling space survival adventure with mesmerizing visuals."
+  },
+  {
+    id: "avt",
+    title: "AVT",
+    description: "Autonomous Vehicle Team at Penn State, pioneering real-world self-driving solutions."
+  },
+  {
+    id: "plo",
+    title: "PLO",
+    description: "People Link One – a community-driven club for building innovative student apps."
+  },
 ];
 
 const ProjectsSection = () => {
@@ -26,13 +38,13 @@ const ProjectsSection = () => {
         }}
       />
 
-      {/* Project List (세로 배치) */}
-      <div className="relative z-40 mt-20 flex flex-col items-center gap-8">
+      {/* Project List */}
+      <div className="relative z-40 mt-32 flex flex-col items-center gap-12">
         {projects.map((project) => (
           <Link key={project.id} href={`/projects/${project.id}`}>
-            <div className="cursor-pointer bg-black bg-opacity-50 text-white px-6 py-4 rounded-lg hover:bg-opacity-80 transition w-80 text-center">
-              <h3 className="text-2xl font-bold">{project.title}</h3>
-              <p className="text-md mt-2">{project.description}</p>
+            <div className="cursor-pointer bg-black/50 text-white px-8 py-6 w-80 text-center rounded-xl shadow-lg hover:scale-105 hover:bg-black/60 transition-all duration-300">
+              <h3 className="text-2xl font-bold tracking-wide">{project.title}</h3>
+              <p className="text-md mt-3 leading-relaxed">{project.description}</p>
             </div>
           </Link>
         ))}
