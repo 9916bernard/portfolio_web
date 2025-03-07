@@ -8,17 +8,19 @@ const projects = [
   {
     id: "cosmic",
     title: "Cosmic Survivor",
-    description: "Embark on a thrilling space survival adventure with mesmerizing visuals."
+    description: "Embark on a thrilling space survival adventure with mesmerizing visuals.",
   },
   {
     id: "avt",
     title: "AVT",
-    description: "Autonomous Vehicle Team at Penn State, pioneering real-world self-driving solutions."
+    description:
+      "Autonomous Vehicle Team at Penn State, pioneering real-world self-driving solutions.",
   },
   {
     id: "plo",
     title: "PLO",
-    description: "People Link One – a community-driven club for building innovative student apps."
+    description:
+      "People Link One – a community-driven club for building innovative student apps.",
   },
 ];
 
@@ -38,8 +40,13 @@ const ProjectsSection = () => {
         }}
       />
 
-      {/* Project List */}
-      <div className="relative z-40 mt-32 flex flex-col items-center gap-12">
+      {/* Projects Title */}
+      <div className="relative z-40 mb-16">
+        <h1 className="text-5xl font-bold text-white drop-shadow-lg">Projects</h1>
+      </div>
+
+      {/* Project List (세로 배치) */}
+      <div className="relative z-40 flex flex-col items-center gap-12">
         {projects.map((project) => (
           <Link key={project.id} href={`/projects/${project.id}`}>
             <div className="cursor-pointer bg-black/50 text-white px-8 py-6 w-80 text-center rounded-xl shadow-lg hover:scale-105 hover:bg-black/60 transition-all duration-300">

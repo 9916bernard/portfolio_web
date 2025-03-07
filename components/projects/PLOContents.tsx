@@ -9,9 +9,15 @@ export default function PLOContent() {
 
   return (
     <PageTransition>
-      <div className="relative min-h-[300vh] bg-fixed bg-cover bg-center bg-gradient-to-b from-blue-500 to-blue-900">
-        {/* 배경 오버레이 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 z-10 pointer-events-none"></div>
+      <div className="relative min-h-[100vh] bg-fixed bg-cover bg-center bg-gradient-to-b from-blue-500 to-blue-900">
+        {/* 배경 오버레이: 그라데이션이 더 빠르게 시작 */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.0) 20%, rgba(0,0,0,0.7) 50%)",
+          }}
+        ></div>
 
         {/* Back Button */}
         <BackButton onClick={() => router.back()} />

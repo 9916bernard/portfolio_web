@@ -10,7 +10,7 @@ export default function NotFoundContent() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
       <BackButton onClick={() => router.back()} />
       <h1 className="text-3xl font-bold mb-4">Project not found</h1>
-      <p className="text-lg">Sorry, we couldn't find that project.</p>
+      <p className="text-lg">Sorry, we couldn&apos;t find that project.</p>
     </div>
   );
 }
