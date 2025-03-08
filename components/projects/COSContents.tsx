@@ -39,7 +39,7 @@ export default function COSContext() {
             A Base-Defense Survival Game
           </h2>
 
-          {/* 메인 소개 */}
+          {/* 메인 소개 블록 (intro) */}
           <div className="bg-black/60 p-8 rounded-xl shadow-xl mb-12">
             <section className="mb-12">
               <h3 className="text-4xl font-semibold mb-4 border-b-2 border-gray-400 pb-2 text-left">
@@ -69,21 +69,21 @@ export default function COSContext() {
             </section>
           </div>
 
-          {/* 실제 게임 플레이 섹션 */}
-          <div className="bg-black/60 p-8 rounded-xl shadow-xl">
+          {/* 실제 게임 플레이 섹션들을 텍스트박스로 감싼 블록 */}
+          <div className="border border-gray-600 p-6 rounded-lg bg-black/60">
             {/* 1. Start */}
             <section className="mb-12">
               <h3 className="text-4xl font-semibold mb-4 border-b-2 border-gray-400 pb-2 text-left">
                 1. Start
               </h3>
               <div className="flex flex-col md:flex-row gap-8 items-center">
-                {/* 텍스트 */}
+                {/* 텍스트 영역 */}
                 <div className="md:w-1/2 text-left">
                   <p className="text-base leading-relaxed mb-4">
                     This is where the adventure begins! You can see the game&apos;s language settings, rankings, upgrades, tutorials, and shops right from the start screen. There&apos;s also an ad banner at the top. Once you&apos;re ready, press start to jump into the action.
                   </p>
                 </div>
-                {/* 비디오 */}
+                {/* 비디오 영역 */}
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
                   <video
                     src={COS_START}
@@ -131,7 +131,7 @@ export default function COSContext() {
 
             <hr className="border-gray-600 mb-12" />
 
-            {/* 3. Combat (기존 group kill) */}
+            {/* 3. Combat */}
             <section className="mb-12">
               <h3 className="text-4xl font-semibold mb-4 border-b-2 border-gray-400 pb-2 text-left">
                 3. Combat
@@ -221,3 +221,5 @@ export default function COSContext() {
     </PageTransition>
   );
 }
+
+

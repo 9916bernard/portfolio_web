@@ -93,32 +93,25 @@ const IntroSection = () => {
             solutions.
           </p>
 
-          {/* Bullet Points */}
-          <h3 className="text-yellow-400 font-bold text-2xl mt-6 mb-2">
+                    {/* Bullet Points */}
+                    <h3 className="text-yellow-400 font-bold text-2xl mt-6 mb-2">
             Highlights
           </h3>
           <ul className="list-disc ml-5 space-y-1">
             <li>
-              <span className="text-yellow-400">Penn State</span> - Computer
-              Science, graduating{" "}
-              <span className="font-bold">Spring 2026</span>
+              <span className="text-yellow-400">Penn State</span> – B.S. in Computer Science, graduating <span className="font-bold">Spring 2026</span>
             </li>
             <li>
-              Awarded{" "}
-              <span className="text-yellow-400 font-bold">
-                DataFest Best in Show
-              </span>{" "}
-              for analytical excellence
+              Projects: Developed <span className="text-yellow-400">games</span>, <span className="text-yellow-400">apps</span>, <span className="text-yellow-400">websites</span>, and <span className="text-yellow-400">autonomous vehicle</span> systems
             </li>
             <li>
-              Developer Intern at Maf Games: integrated ranking system, Google
-              Ads, Firebase
+              Internships: Gained hands-on experience as a Developer Intern and a QA Intern at gaming companies
             </li>
             <li>
-              QA Intern at Naddic Games: reduced bugs by 25% for{" "}
-              <em>Closers</em>
+              Awarded <span className="text-yellow-400 font-bold">DataFest Best in Show</span> for analytical insights
             </li>
           </ul>
+
         </motion.div>
       </div>
     </section>
