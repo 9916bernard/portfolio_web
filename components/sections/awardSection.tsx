@@ -2,25 +2,111 @@
 
 import React from "react";
 
+// Awards 데이터
 const awards = [
-  { title: "DataFest Best in Show", description: "Awarded for analytical excellence in big data analysis." },
-  { title: "Dean’s List (5/6 Semesters)", description: "Recognized for outstanding academic performance at Penn State." },
+  {
+    title: "DataFest 2024 | Best in Show - Team Leader",
+    link: "https://datafest.psu.edu/_2024/",
+    highlights: [
+      "Analyzed large-scale 'CourseKata' datasets to identify key patterns for improved educational strategies.",
+      "Utilized Python and Power BI to explore trends in student focus time and the impact of visual content.",
+      "Adapted to unexpected results by refining hypotheses, ensuring actionable insights for better learning outcomes.",
+    ],
+  },
+  {
+    title: "Dean's List (5/6 Semesters)",
+    highlights: ["Recognized for outstanding academic performance at Penn State."],
+  },
+  {
+    title: "2025 Spring Hackathon",
+    isComingSoon: true,
+    highlights: [
+      "Preparing to participate in a major hackathon event in Spring 2025.",
+      "Stay tuned for updates on new ideas and innovative solutions!",
+    ],
+  },
 ];
 
-const AwardsSection = () => {
+export default function AwardsSection() {
   return (
-    <section id="awards" className="relative min-h-[100vh] p-10 bg-gray-900 text-white">
-      <h2 className="text-5xl font-bold text-yellow-400 text-center">Awards & Honors</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 max-w-4xl mx-auto">
-        {awards.map((award, index) => (
-          <div key={index} className="p-5 border border-yellow-400 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-bold text-yellow-400">{award.title}</h3>
-            <p className="text-gray-300 mt-2">{award.description}</p>
-          </div>
-        ))}
+    <section
+      id="awards"
+      className="relative min-h-[100vh] p-10 bg-gray-900 text-white"
+    >
+      <h2 className="text-5xl font-bold text-yellow-400 text-center mb-10">
+        Awards &amp; Honors
+      </h2>
+
+      {/* 단일 열로 나열 */}
+      <div className="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
+        {awards.map((award, index) => {
+          const isDeansList = award.title.includes("Dean");
+          return isDeansList ? (
+            // Dean's List는 외부 노란 테두리 없이
+            <div
+              key={index}
+              className="relative rounded-xl shadow-xl hover:scale-105 transition-transform duration-300"
+            >
+              <div className="bg-gray-800 rounded-xl p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-2xl font-bold text-yellow-300">
+                    {award.title}
+                  </h3>
+                </div>
+                {award.link && (
+                  <a
+                    href={award.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded-full shadow hover:bg-yellow-200 transition-colors duration-300 mb-3"
+                  >
+                    Learn More
+                  </a>
+                )}
+                <ul className="list-disc list-inside text-gray-200 text-sm leading-relaxed">
+                  {award.highlights.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            // 나머지 항목은 노란 그라데이션 테두리 적용
+            <div
+              key={index}
+              className="relative bg-gradient-to-r from-yellow-400 to-yellow-200 p-1 rounded-xl shadow-xl hover:scale-105 transition-transform duration-300"
+            >
+              <div className="bg-gray-800 rounded-xl p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-2xl font-bold text-yellow-300">
+                    {award.title}
+                  </h3>
+                  {award.isComingSoon && (
+                    <span className="text-xs bg-red-500 text-white px-2 py-1 rounded-full font-semibold">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
+                {award.link && (
+                  <a
+                    href={award.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded-full shadow hover:bg-yellow-200 transition-colors duration-300 mb-3"
+                  >
+                    Learn More
+                  </a>
+                )}
+                <ul className="list-disc list-inside text-gray-200 text-sm leading-relaxed">
+                  {award.highlights.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
-};
-
-export default AwardsSection;
+}

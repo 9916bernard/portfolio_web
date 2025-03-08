@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import AVTContent from "../../../../components/projects/AVTContents";
 import PLOContent from "../../../../components/projects/PLOContents";
 import NotFoundContent from "../../../../components/projects/NotFoundContents";
+import COSContent from "../../../../components/projects/COSContents";
 
 export default function ProjectPage() {
   const { id } = useParams();
@@ -13,8 +14,9 @@ export default function ProjectPage() {
       return <AVTContent />;
     case "plo":
       return <PLOContent />;
+    case "cosmic":
+      return <COSContent />;
     default:
-      // 존재하지 않는 id로 접근 시
       return <NotFoundContent />;
   }
 }

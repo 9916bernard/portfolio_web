@@ -37,7 +37,7 @@ const experiences = [
 
 const ExperiencesSection = () => {
   return (
-    <section id="experiences" className="relative min-h-[150vh] p-10 bg-black text-white">
+    <section id="experiences" className="relative min-h-[100vh] p-10 bg-black text-white">
       <h2 className="text-5xl font-bold text-yellow-400 text-center">Work Experience</h2>
       <div className="mt-10 space-y-10 max-w-3xl mx-auto">
         {experiences.map((exp, index) => (
