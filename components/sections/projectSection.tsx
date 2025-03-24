@@ -44,7 +44,7 @@ const ProjectsSection = () => {
         {projects.map((project) => (
           <div
             key={project.id}
-            className="flex flex-col items-center p-6 bg-gray-800/80 rounded-xl border border-yellow-400 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1"
+            className="flex flex-col items-center p-6 bg-transparent rounded-xl border border-yellow-400 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1"
           >
             {/* 프로젝트 타이틀 */}
             <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
@@ -52,13 +52,10 @@ const ProjectsSection = () => {
             <p className="text-md text-gray-300 text-center">{project.description}</p>
             {/* 버튼 */}
             <Link href={`/projects/${project.id}`}>
-            <button className="relative overflow-hidden mt-4 px-6 py-2 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition-all duration-200">
-  {/* 텍스트를 감싸는 span: 항상 보이도록 z-10 */}
-  <span className="relative z-10">View Details</span>
-  {/* 빛나는 효과용 span에 animate-shine 클래스 추가 */}
-  <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
-</button>
-
+              <button className="relative overflow-hidden mt-4 px-6 py-2 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition-all duration-200">
+                <span className="relative z-10">View Details</span>
+                <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
+              </button>
             </Link>
           </div>
         ))}

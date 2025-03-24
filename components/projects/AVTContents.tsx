@@ -9,8 +9,8 @@ import LineLimitedParagraph from "../LineLimitedParagraph";
 import avt_bg from "../../assets/image/avt_bg_noel.jpeg";
 import avt_group from "../../assets/image/avt_group.jpeg";
 
-const BACKCAR_VIDEO_SRC = "/video/avt_car_back.MOV";
-const AVT_TEST_VIDEO_SRC = "/video/avt_test.MOV";
+const BACKCAR_VIDEO_SRC = "/video/avt_car_back_ad.mp4";
+const AVT_TEST_VIDEO_SRC = "/video/avt_test_ad.mp4";
 
 export default function AVTContent() {
   const router = useRouter();
