@@ -42,8 +42,12 @@ const ExperiencesSection = () => {
       <div className="mt-10 space-y-10 max-w-3xl mx-auto">
         {experiences.map((exp, index) => (
           <div key={index} className="border-l-4 border-yellow-400 pl-5 relative">
-            <h3 className="text-2xl font-bold">{exp.position} <span className="text-yellow-400">@ {exp.company}</span></h3>
-            <p className="text-gray-300">{exp.location} | {exp.duration}</p>
+            <h3 className="text-2xl font-bold">
+              {exp.position} <span className="text-yellow-400">@ {exp.company}</span>
+            </h3>
+            <p className="text-gray-300">
+              {exp.location} | {exp.duration}
+            </p>
             <ul className="list-disc ml-5 mt-2 text-gray-400">
               {exp.details.map((detail, i) => (
                 <li key={i}>{detail}</li>
@@ -51,6 +55,18 @@ const ExperiencesSection = () => {
             </ul>
           </div>
         ))}
+        {/* 인턴십 구하는 블록 */}
+        <div className="border-l-4 border-yellow-400 pl-5 relative">
+          <h3 className="text-2xl font-bold">
+            2025 Summer, Fall Internship{" "}
+            <span className="text-yellow-400">@ Your Company</span>
+          </h3>
+          <p className="text-gray-300">Preferred Location: USA or Korea | May 2025 - Dec 2025</p>
+          <ul className="list-disc ml-5 mt-2 text-gray-300">
+            <li>Actively seeking a Software Engineering Intern role</li>
+            <li>Eager to gain more experience and further enhance my skills</li>
+          </ul>
+        </div>
       </div>
     </section>
   );

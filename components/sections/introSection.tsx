@@ -12,14 +12,8 @@ const IntroSection = () => {
       className="relative flex flex-col justify-center items-center min-h-[200vh] p-8 bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${bg_me.src})` }}
     >
-      {/* Background Overlay */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0.4) 25%, rgba(0,0,0,0.4) 66.67%, rgba(0,0,0,0.9) 66.67%, rgba(0,0,0,0.9) 100%)",
-        }}
-      />
+      {/* 부모의 대각선 그라데이션을 살리기 위해 부분 투명 오버레이만 사용 */}
+      <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
 
       {/* Animated Content */}
       <div className="absolute inset-0 z-30 pointer-events-none">
@@ -93,16 +87,20 @@ const IntroSection = () => {
             solutions.
           </p>
 
-                    {/* Bullet Points */}
-                    <h3 className="text-yellow-400 font-bold text-2xl mt-6 mb-2">
+          {/* Bullet Points */}
+          <h3 className="text-yellow-400 font-bold text-2xl mt-6 mb-2">
             Highlights
           </h3>
           <ul className="list-disc ml-5 space-y-1">
             <li>
-              <span className="text-yellow-400">Penn State</span> – B.S. in Computer Science, graduating <span className="font-bold">Spring 2026</span>
+              <span className="text-yellow-400">Penn State</span> – B.S. in Computer Science, graduating{" "}
+              <span className="font-bold">Spring 2026</span>
             </li>
             <li>
-              Projects: Developed <span className="text-yellow-400">games</span>, <span className="text-yellow-400">apps</span>, <span className="text-yellow-400">websites</span>, and <span className="text-yellow-400">autonomous vehicle</span> systems
+              Projects: Developed <span className="text-yellow-400">games</span>,{" "}
+              <span className="text-yellow-400">apps</span>,{" "}
+              <span className="text-yellow-400">websites</span>, and{" "}
+              <span className="text-yellow-400">autonomous vehicle</span> systems
             </li>
             <li>
               Internships: Gained hands-on experience as a Developer Intern and a QA Intern at gaming companies
@@ -111,7 +109,6 @@ const IntroSection = () => {
               Awarded <span className="text-yellow-400 font-bold">DataFest Best in Show</span> for analytical insights
             </li>
           </ul>
-
         </motion.div>
       </div>
     </section>

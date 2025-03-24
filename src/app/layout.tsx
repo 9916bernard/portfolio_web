@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MobileNotice from "../../components/MobileNotice"; // 경로는 프로젝트 구조에 맞게 조정
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: "Portfolio | Sungheon Bernard Lee",
   description: "Sungheon Bernard Lee's portfolio",
   icons: {
-    icon: "/logo-transparent.ico", // public/logo-transparent.ico
+    icon: "/logo-transparent.ico",
   },
 };
 
@@ -30,10 +31,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon-16x16.png" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <MobileNotice>{children}</MobileNotice>
       </body>
     </html>
   );

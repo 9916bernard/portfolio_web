@@ -3,24 +3,21 @@
 import Link from "next/link";
 import psu_image from "../../assets/image/psu_image.jpg";
 
-// 새로운 프로젝트 목록
 const projects = [
   {
     id: "cosmic",
     title: "Cosmic Survivor",
-    description: "Embark on a thrilling space survival adventure with mesmerizing visuals.",
+    description: "Thrilling space survival game",
   },
   {
     id: "avt",
     title: "AVT",
-    description:
-      "Autonomous Vehicle Team at Penn State, pioneering real-world self-driving solutions.",
+    description: "Autonomous vehicle team",
   },
   {
     id: "plo",
     title: "PLO",
-    description:
-      "People Link One – a community-driven club for building innovative student apps.",
+    description: "Innovative student app community",
   },
 ];
 
@@ -31,38 +28,39 @@ const ProjectsSection = () => {
       className="relative flex flex-col justify-center items-center min-h-[150vh] p-8 bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${psu_image.src})` }}
     >
-      {/* Gradient Overlay */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 15.35%, rgba(0,0,0,0.7) 13.25%, rgba(0,0,0,0.9) 100%)",
-        }}
-      />
+      {/* 부모의 대각선 그라데이션을 살리기 위해 부분 투명 오버레이만 사용 */}
+      <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
 
-      {/* Projects Title */}
-      <div className="relative z-40 mb-16">
+      {/* 섹션 타이틀 */}
+      <div className="relative z-20 text-center mb-12">
         <h1 className="text-5xl font-bold text-white drop-shadow-lg">Projects</h1>
+        <p className="text-md text-gray-300 mt-2">
+          Explore some of my featured work below
+        </p>
       </div>
 
-      {/* Project List - 가로 배열 */}
-      <div className="relative z-40 flex flex-row flex-wrap justify-center items-center gap-12">
+      {/* 프로젝트 목록 - 세로 배치 */}
+      <div className="relative z-20 flex flex-col gap-12 w-full max-w-3xl px-4">
         {projects.map((project) => (
-          <Link key={project.id} href={`/projects/${project.id}`}>
-            <div className="cursor-pointer group w-[350px] rounded-xl overflow-hidden border-2 border-yellow-400 shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-              <div className="bg-black/50 backdrop-blur-sm px-8 py-10 text-center">
-                <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                <p className="text-md mt-3 text-gray-300 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="mt-4">
-                  <span className="text-lg font-semibold text-yellow-400 uppercase tracking-wider">
-                    Click to Explore
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Link>
+          <div
+            key={project.id}
+            className="flex flex-col items-center p-6 bg-gray-800/80 rounded-xl border border-yellow-400 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1"
+          >
+            {/* 프로젝트 타이틀 */}
+            <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+            {/* 한 줄 설명 */}
+            <p className="text-md text-gray-300 text-center">{project.description}</p>
+            {/* 버튼 */}
+            <Link href={`/projects/${project.id}`}>
+            <button className="relative overflow-hidden mt-4 px-6 py-2 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition-all duration-200">
+  {/* 텍스트를 감싸는 span: 항상 보이도록 z-10 */}
+  <span className="relative z-10">View Details</span>
+  {/* 빛나는 효과용 span에 animate-shine 클래스 추가 */}
+  <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
+</button>
+
+            </Link>
+          </div>
         ))}
       </div>
     </section>
