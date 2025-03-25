@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import bg_me from "../../assets/image/bg_me.jpeg";
+import bg_me from "../../assets/image/bg_me_rm_2.jpeg";
 import logo from "../../assets/image/logo-transparent-png.png";
 
 const IntroSection = () => {
