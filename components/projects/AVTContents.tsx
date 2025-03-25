@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import BackButton from "../BackButton";
 import PageTransition from "../PageTransition";
 import LineLimitedParagraph from "../LineLimitedParagraph";
+import { useRef, useEffect } from "react";
+import React from "react";
 
 // 이미지 & 영상 경로 (예시)
 import avt_bg from "../../assets/image/avt_bg_noel.jpeg";
@@ -11,6 +13,39 @@ import avt_group from "../../assets/image/avt_group.jpeg";
 
 const BACKCAR_VIDEO_SRC = "/video/avt_car_back_ad.mp4";
 const AVT_TEST_VIDEO_SRC = "/video/avt_test_ad.mp4";
+
+// LazyVideo 컴포넌트: 뷰포트 내에 있을 때 재생, 아니면 일시 중지
+function LazyVideo(props: React.VideoHTMLAttributes<HTMLVideoElement>) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.unobserve(video);
+    };
+  }, []);
+
+  return <video ref={videoRef} {...props} />;
+}
 
 export default function AVTContent() {
   const router = useRouter();
@@ -100,7 +135,7 @@ export default function AVTContent() {
                 </div>
                 {/* 영상 영역 */}
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
-                  <video
+                  <LazyVideo
                     src={BACKCAR_VIDEO_SRC}
                     autoPlay
                     muted
@@ -139,7 +174,7 @@ export default function AVTContent() {
                 </div>
                 {/* 영상 영역 */}
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
-                  <video
+                  <LazyVideo
                     src={AVT_TEST_VIDEO_SRC}
                     autoPlay
                     muted

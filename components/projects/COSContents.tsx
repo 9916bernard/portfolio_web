@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import BackButton from "../BackButton";
 import PageTransition from "../PageTransition";
+import { useRef, useEffect } from "react";
+import React from "react";
 
 // 배경 이미지 (예: /assets/image/cos_bg.jpeg)
 import cos_bg from "../../assets/image/cos_bg.jpeg";
@@ -14,6 +16,39 @@ const COS_GROUP_KILL = "/video/cos_group_kill_ad.mp4";
 const COS_BOSS = "/video/cos_boss_ad.mp4";
 const COS_FINAL = "/video/cos_final_ad.mp4";
 
+// LazyVideo 컴포넌트: 뷰포트 내에 있을 때 재생, 아니면 일시 중지
+function LazyVideo(props: React.VideoHTMLAttributes<HTMLVideoElement>) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.unobserve(video);
+    };
+  }, []);
+
+  return <video ref={videoRef} {...props} />;
+}
+
 export default function COSContext() {
   const router = useRouter();
 
@@ -23,8 +58,15 @@ export default function COSContext() {
         className="relative min-h-[300vh] bg-fixed bg-cover bg-center"
         style={{ backgroundImage: `url(${cos_bg.src})` }}
       >
-        {/* 배경 오버레이 (그라데이션) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 z-10 pointer-events-none"></div>
+        {/* 배경 오버레이 (그라데이션) - GPU 가속을 위해 CSS 속성 추가 */}
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 z-10 pointer-events-none"
+          style={{
+            willChange: "opacity, transform",
+            transform: "translateZ(0)",
+            backfaceVisibility: "hidden",
+          }}
+        ></div>
 
         {/* Back Button */}
         <BackButton onClick={() => router.back()} />
@@ -94,7 +136,7 @@ export default function COSContext() {
                 </div>
                 {/* 비디오 영역 */}
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
-                  <video
+                  <LazyVideo
                     src={COS_START}
                     autoPlay
                     muted
@@ -128,7 +170,7 @@ export default function COSContext() {
                   </div>
                 </div>
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
-                  <video
+                  <LazyVideo
                     src={COS_LEVEL_UP}
                     autoPlay
                     muted
@@ -162,7 +204,7 @@ export default function COSContext() {
                   </div>
                 </div>
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
-                  <video
+                  <LazyVideo
                     src={COS_GROUP_KILL}
                     autoPlay
                     muted
@@ -196,7 +238,7 @@ export default function COSContext() {
                   </div>
                 </div>
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
-                  <video
+                  <LazyVideo
                     src={COS_BOSS}
                     autoPlay
                     muted
@@ -230,7 +272,7 @@ export default function COSContext() {
                   </div>
                 </div>
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
-                  <video
+                  <LazyVideo
                     src={COS_FINAL}
                     autoPlay
                     muted
