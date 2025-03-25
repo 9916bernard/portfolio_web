@@ -1,5 +1,3 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -32,32 +30,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  // 필요시 커스텀 이벤트 등록 예시:
-  // 예를 들어, 페이지 로드 시 커스텀 이벤트를 기록하려면 아래와 같이 할 수 있습니다.
-  // useEffect(() => {
-  //   Analytics.track("PageLoaded", {
-  //     path: window.location.pathname,
-  //     userAgent: navigator.userAgent,
-  //     // 추가 정보도 함께 기록 가능
-  //   });
-  // }, []);
-
   return (
     <html lang="en">
       <head>
         <link rel="icon" href="/logo-transparent.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon-16x16.png" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <MobileNotice>{children}</MobileNotice>
-        {/* Vercel Analytics 컴포넌트를 추가하면 페이지뷰, 디바이스 정보 등 다양한 데이터를 자동 수집합니다 */}
+        {/* Vercel Analytics는 클라이언트 컴포넌트이므로 서버 컴포넌트 내에서 import 및 사용 가능합니다 */}
         <Analytics />
       </body>
     </html>
