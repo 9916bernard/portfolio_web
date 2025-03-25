@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 
 interface SidebarProps {
   activeSection: string;
@@ -18,15 +18,23 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
       setBarPosition(newPosition);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [offsetFromBottom]);
+
+  const handleLinkClick = (sectionId: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const getLinkClass = (sectionId: string) =>
     `border border-white px-4 py-3 w-40 text-center rounded transition font-bold ${
       activeSection === sectionId
-        ? 'bg-yellow-500 text-white shadow-lg'
-        : 'text-white hover:bg-white hover:text-black'
+        ? "bg-yellow-500 text-white shadow-lg"
+        : "text-white hover:bg-white hover:text-black"
     }`;
 
   return (
@@ -42,25 +50,24 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
         space-y-4 
         items-center 
         z-50 
-
-        opacity-20      /* 기본 투명도 50% */
-        hover:opacity-100 /* 마우스 hover 시 100%로 */
+        opacity-20
+        hover:opacity-100
       "
       style={{ top: `${barPosition}px` }}
     >
-      <a href="#intro" className={getLinkClass('intro')}>
+      <a href="#intro" className={getLinkClass("intro")} onClick={(e) => handleLinkClick("intro", e)}>
         Intro
       </a>
-      <a href="#projects" className={getLinkClass('projects')}>
+      <a href="#projects" className={getLinkClass("projects")} onClick={(e) => handleLinkClick("projects", e)}>
         Projects
       </a>
-      <a href="#experiences" className={getLinkClass('experiences')}>
+      <a href="#experiences" className={getLinkClass("experiences")} onClick={(e) => handleLinkClick("experiences", e)}>
         Experiences
       </a>
-      <a href="#awards" className={getLinkClass('awards')}>
+      <a href="#awards" className={getLinkClass("awards")} onClick={(e) => handleLinkClick("awards", e)}>
         Awards
       </a>
-      <a href="#contact" className={getLinkClass('contact')}>
+      <a href="#contact" className={getLinkClass("contact")} onClick={(e) => handleLinkClick("contact", e)}>
         Contact
       </a>
     </div>
