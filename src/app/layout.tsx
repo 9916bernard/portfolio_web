@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MobileNotice from "../../components/MobileNotice"; // 경로는 프로젝트 구조에 맞게 조정
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,8 +40,10 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <MobileNotice>{children}</MobileNotice>
-        {/* Vercel Analytics는 클라이언트 컴포넌트이므로 서버 컴포넌트 내에서 import 및 사용 가능합니다 */}
+        {/* Vercel Analytics: 페이지뷰, 사용자 디바이스 정보 자동 수집 */}
         <Analytics />
+        {/* 기본 SpeedInsights 컴포넌트 사용 (커스텀 옵션은 현재 지원되지 않습니다) */}
+        <SpeedInsights />
       </body>
     </html>
   );
