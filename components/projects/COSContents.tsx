@@ -55,6 +55,8 @@ const OnDemandVideo = memo(({ src, className }: OnDemandVideoProps) => {
   );
 });
 
+OnDemandVideo.displayName = "OnDemandVideo"; // ✅ 해결: react/display-name
+
 export default function COSContext() {
   const router = useRouter();
 
@@ -85,7 +87,7 @@ export default function COSContext() {
               </h3>
               <div className="bg-black/50 p-4 rounded-lg">
                 <p className="text-base leading-relaxed mb-4">
-                  🚀 Cosmic Survivor is a base-defense survival game inspired by the Vampire Survivors genre, featuring strategic base expansion, real-time combat, and upgrade mechanics. I've included various weapons, turrets, and enemies, with a procedurally expanding map and permanent progression elements.
+                  🚀 Cosmic Survivor is a base-defense survival game inspired by the Vampire Survivors genre, featuring strategic base expansion, real-time combat, and upgrade mechanics. I&apos;ve included various weapons, turrets, and enemies, with a procedurally expanding map and permanent progression elements.
                 </p>
                 <p className="text-base leading-relaxed mb-4">
                   Here are some of the key features already implemented:
@@ -103,7 +105,7 @@ export default function COSContext() {
                   <li>In-Game Tutorial: Step-by-step introduction to mechanics.</li>
                 </ul>
                 <p className="text-base leading-relaxed mb-4">
-                  Planned features include more weapons, additional playable spaceships, and new abilities. Currently, it's at an Alpha Prototype stage, but the core mechanics are fully implemented.
+                  Planned features include more weapons, additional playable spaceships, and new abilities. Currently, it&apos;s at an Alpha Prototype stage, but the core mechanics are fully implemented.
                 </p>
               </div>
             </section>
@@ -113,7 +115,7 @@ export default function COSContext() {
             {/* Start */}
             <Section
               title="Start"
-              description="This is where the adventure begins! From language settings to rankings, upgrades, tutorials, and shops, the start screen lays the foundation for your gameplay. An ad banner is displayed at the top. Press start when you're ready for action."
+              description="This is where the adventure begins! From language settings to rankings, upgrades, tutorials, and shops, the start screen lays the foundation for your gameplay. An ad banner is displayed at the top. Press start when you&apos;re ready for action."
               src={COS_START}
               caption="The start screen: language toggle, shop, and more."
             />

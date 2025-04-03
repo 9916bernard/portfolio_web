@@ -5,6 +5,7 @@ import BackButton from "../BackButton";
 import PageTransition from "../PageTransition";
 import LineLimitedParagraph from "../LineLimitedParagraph";
 import React, { useState, memo } from "react";
+import Image from "next/image"; // ✅ next/image 사용
 
 import avt_bg from "../../assets/image/avt_bg_noel_res.jpg";
 import avt_group from "../../assets/image/avt_group.jpeg";
@@ -57,6 +58,8 @@ const OnDemandVideo = memo(({ src, className, style }: OnDemandVideoProps) => {
   );
 });
 
+OnDemandVideo.displayName = "OnDemandVideo"; // ✅ display name 추가
+
 export default function AVTContent() {
   const router = useRouter();
 
@@ -102,10 +105,11 @@ export default function AVTContent() {
                 />
               </div>
               <div className="md:w-1/2 flex flex-col items-center">
-                <img
-                  src={avt_group.src}
+                <Image
+                  src={avt_group}
                   alt="AVT Group"
                   className="rounded-xl shadow-2xl transform hover:scale-105 transition duration-300 w-full max-w-xl"
+                  placeholder="blur"
                 />
                 <p className="text-gray-400 text-sm mt-2">
                   FA 2024 AVT – I&apos;m standing at the far left.
