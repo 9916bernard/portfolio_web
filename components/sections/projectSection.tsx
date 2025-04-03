@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import psu_image from "../../assets/image/psu_image.jpg";
+import psu_image from "../../assets/image/psu_image_res.jpg";
 
 const projects = [
   {
