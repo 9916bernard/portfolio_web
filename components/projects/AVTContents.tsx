@@ -5,7 +5,7 @@ import BackButton from "../BackButton";
 import PageTransition from "../PageTransition";
 import LineLimitedParagraph from "../LineLimitedParagraph";
 import React, { useState, memo } from "react";
-import Image from "next/image"; // ✅ next/image 사용
+import Image from "next/image";
 
 import avt_bg from "../../assets/image/avt_bg_noel_res.jpg";
 import avt_group from "../../assets/image/avt_group.jpeg";
@@ -58,7 +58,7 @@ const OnDemandVideo = memo(({ src, className, style }: OnDemandVideoProps) => {
   );
 });
 
-OnDemandVideo.displayName = "OnDemandVideo"; // ✅ display name 추가
+OnDemandVideo.displayName = "OnDemandVideo";
 
 export default function AVTContent() {
   const router = useRouter();
@@ -92,16 +92,16 @@ export default function AVTContent() {
                   </strong>
                 </h3>
                 <LineLimitedParagraph
-                  text="In August 2024, I joined the <strong class='text-yellow-400'>Penn State Advanced Vehicle Team (AVT)</strong>. The <strong class='text-yellow-400'>Penn State AVT’s mission</strong> is to offer an unparalleled learning experience..."
+                  text="In August 2024, I joined the <strong class='text-yellow-400'>Penn State Advanced Vehicle Team (AVT)</strong>. The <strong class='text-yellow-400'>Penn State AVT’s mission</strong> is to offer an unparalleled learning experience for students by developing algorithms for <strong class='text-yellow-400'>autonomous driving</strong>, re-engineering <strong class='text-yellow-400'>electric vehicles</strong> to enhance driving range, and improving vehicle architecture while maintaining consumer demand."
                 />
                 <LineLimitedParagraph
-                  text="Since 1988, the <strong class='text-yellow-400'>Penn State AVT</strong> has competed in the <strong class='text-yellow-400'>Advanced Vehicle Technology Competitions</strong>..."
+                  text="Since 1988, the <strong class='text-yellow-400'>Penn State AVT</strong> has competed in the <strong class='text-yellow-400'>Advanced Vehicle Technology Competitions</strong>, focusing on building a <strong class='text-yellow-400'>fuel-efficient vehicle</strong> without compromising performance or safety."
                 />
                 <LineLimitedParagraph
-                  text="I was excited to join a team that emphasizes <strong class='text-yellow-400'>real-world applications</strong>..."
+                  text="I was excited to join a team that emphasizes <strong class='text-yellow-400'>real-world applications</strong> of <strong class='text-yellow-400'>cutting-edge engineering</strong>. From day one, it was clear that <strong class='text-yellow-400'>collaboration</strong> and <strong class='text-yellow-400'>hands-on learning</strong> are central to <strong class='text-yellow-400'>AVT’s culture</strong>."
                 />
                 <LineLimitedParagraph
-                  text="We regularly partner with <strong class='text-yellow-400'>industry sponsors</strong> and <strong class='text-yellow-400'>academic departments</strong>..."
+                  text="We regularly partner with <strong class='text-yellow-400'>industry sponsors</strong> and <strong class='text-yellow-400'>academic departments</strong>, ensuring that each member gains exposure to <strong class='text-yellow-400'>multi-disciplinary projects</strong>. It’s a fast-paced environment, but the support from <strong class='text-yellow-400'>faculty</strong> and <strong class='text-yellow-400'>alumni</strong> helps keep our goals on track."
                 />
               </div>
               <div className="md:w-1/2 flex flex-col items-center">
@@ -128,16 +128,16 @@ export default function AVTContent() {
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="md:w-1/2 text-left">
                   <LineLimitedParagraph
-                    text="I developed a core pipeline component in <strong class='text-yellow-400'>ROS2</strong> using <strong class='text-yellow-400'>Python</strong> to integrate data..."
+                    text="I developed a core pipeline component in <strong class='text-yellow-400'>ROS2</strong> using <strong class='text-yellow-400'>Python</strong> to integrate data from <strong class='text-yellow-400'>HDMaps</strong>, <strong class='text-yellow-400'>LiDAR</strong>, and <strong class='text-yellow-400'>Camera</strong>. This module publishes data to the <strong class='text-yellow-400'>Control State Machine</strong>, generating <strong class='text-yellow-400'>real-time vehicle trajectories</strong>."
                   />
                   <LineLimitedParagraph
-                    text="By synthesizing multiple sensor inputs simultaneously, the system can more reliably account for <strong class='text-yellow-400'>dynamic objects</strong>..."
+                    text="By synthesizing multiple sensor inputs simultaneously, the system can more reliably account for <strong class='text-yellow-400'>dynamic objects</strong> on the road and update trajectories at <strong class='text-yellow-400'>high frequency</strong>."
                   />
                   <LineLimitedParagraph
-                    text="Additionally, we introduced a robust <strong class='text-yellow-400'>error-handling routine</strong> to ensure the pipeline..."
+                    text="Additionally, we introduced a robust <strong class='text-yellow-400'>error-handling routine</strong> to ensure the pipeline gracefully recovers from unexpected sensor dropouts or corrupted data, which was crucial for <strong class='text-yellow-400'>real-world viability</strong>."
                   />
                   <LineLimitedParagraph
-                    text="(This was the <strong class='text-yellow-400'>first time</strong> we tested real sensor inputs...)"
+                    text="(This was the <strong class='text-yellow-400'>first time</strong> we tested real sensor inputs from the <strong class='text-yellow-400'>Perception team</strong> directly on the car.)"
                   />
                 </div>
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
@@ -163,13 +163,13 @@ export default function AVTContent() {
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="md:w-1/2 text-left">
                   <LineLimitedParagraph
-                    text="Ultimately, the car was able to operate in <strong class='text-yellow-400'>full autonomous mode</strong> by recognizing dynamic objects..."
+                    text="Ultimately, the car was able to operate in <strong class='text-yellow-400'>full autonomous mode</strong> by recognizing <strong class='text-yellow-400'>dynamic objects</strong> and <strong class='text-yellow-400'>traffic signals</strong>. Our demonstration validated <strong class='text-yellow-400'>real-time data generation</strong> within an 80 cm error range, highlighting the system’s <strong class='text-yellow-400'>precision</strong>."
                   />
                   <LineLimitedParagraph
-                    text="The design showcase provided an opportunity for <strong class='text-yellow-400'>industry professionals</strong> and <strong class='text-yellow-400'>fellow researchers</strong>..."
+                    text="The design showcase provided an opportunity for <strong class='text-yellow-400'>industry professionals</strong> and <strong class='text-yellow-400'>fellow researchers</strong> to offer feedback. We gained insights into refining the <strong class='text-yellow-400'>user interface</strong> for remote monitoring and ensuring <strong class='text-yellow-400'>robust performance</strong> under inclement weather conditions."
                   />
                   <LineLimitedParagraph
-                    text="Moving forward, we plan to expand our testing environments and incorporate more advanced <strong class='text-yellow-400'>sensor fusion algorithms</strong>..."
+                    text="Moving forward, we plan to expand our testing environments to different terrains and incorporate more advanced <strong class='text-yellow-400'>sensor fusion algorithms</strong>. Each iteration brings us closer to a truly <strong class='text-yellow-400'>autonomous solution</strong> capable of handling diverse <strong class='text-yellow-400'>real-world scenarios</strong>."
                   />
                 </div>
                 <div className="md:w-1/2 flex flex-col justify-center items-center">
