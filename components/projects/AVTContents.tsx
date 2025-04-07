@@ -69,8 +69,7 @@ export default function AVTContent() {
         className="relative min-h-[300vh] bg-fixed bg-cover bg-center"
         style={{ backgroundImage: `url(${avt_bg.src})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 z-10 pointer-events-none"></div>
-
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/20 z-10 pointer-events-none" />
         <BackButton onClick={() => router.back()} />
 
         <div className="relative z-20 w-full max-w-6xl mx-auto px-6 pt-24 pb-32 text-white">

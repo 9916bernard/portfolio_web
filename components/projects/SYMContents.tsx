@@ -19,18 +19,18 @@ export default function SymptomSenseContent() {
         className="relative min-h-[200vh] bg-fixed bg-cover bg-center"
         style={{ backgroundImage: `url(${sym_bg.src})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 z-10 pointer-events-none" />
+        {/* 수정된 밝아지는 그라데이션 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/20 z-10 pointer-events-none" />
 
         <BackButton onClick={() => router.back()} />
 
         <div className="relative z-20 w-full max-w-6xl mx-auto px-6 pt-24 pb-32 text-white">
-        <h1 className="text-center text-6xl md:text-7xl font-extrabold mb-2 drop-shadow">
-  SymptomSense
-</h1>
-<p className="text-center text-lg md:text-xl font-semibold text-blue-300 underline mb-12">
-  🔗 <a href="https://symptomsense.vercel.app" target="_blank" rel="noopener noreferrer">Try it out</a>
-</p>
-
+          <h1 className="text-center text-6xl md:text-7xl font-extrabold mb-2 drop-shadow">
+            SymptomSense
+          </h1>
+          <p className="text-center text-lg md:text-xl font-semibold text-blue-300 underline mb-12">
+            🔗 <a href="https://symptomsense.vercel.app" target="_blank" rel="noopener noreferrer">Try it out</a>
+          </p>
 
           <div className="bg-black/60 p-8 rounded-xl shadow-xl">
             {/* Intro Section */}
