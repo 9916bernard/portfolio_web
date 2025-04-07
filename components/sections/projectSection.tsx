@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image"; // 로고를 표시하기 위해 next/image 사용
+import Image, { StaticImageData } from "next/image"; // 로고를 표시하기 위해 next/image 사용
 import psu_image from "../../assets/image/psu_image_res.jpg";
 
 // 로고 이미지 import (실제 파일명과 경로에 맞게 수정하세요)
@@ -33,7 +33,7 @@ const projects = [
   {
     id: "symptomsense",
     title: "SymptomSense",
-    description: "Coming Soon",
+    description: "AI-powered symptom checker",
     tags: ["#typescript", "#gemini", "#mongoDB", "#googlemap", "#openFDA", "#health"],
   },
   {
@@ -45,7 +45,7 @@ const projects = [
 ];
 
 // 프로젝트 ID에 대응되는 로고를 매핑
-const logoMap: Record<string, any> = {
+const logoMap: Record<string, StaticImageData> = {
   cosmic: cosmicLogo,
   avt: avtLogo,
   plo: ploLogo,
