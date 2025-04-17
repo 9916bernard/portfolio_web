@@ -10,8 +10,6 @@ export default function Home() {
   const sectionIds = ['intro', 'projects', 'experiences', 'awards', 'contact'];
   const activeSection = useScrollSpy(sectionIds);
 
-  console.log('activeSection:', activeSection);
-
   return (
     <div className="relative w-full">
       <Sidebar activeSection={activeSection} />

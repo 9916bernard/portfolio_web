@@ -12,7 +12,7 @@ const IntroSection = () => {
   return (
     <section
       id="intro"
-      className="relative flex flex-col justify-center items-center min-h-[200vh] p-8 bg-cover bg-center bg-fixed"
+      className="relative flex flex-col justify-center items-center min-h-[200vh] p-4 md:p-8 bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${bg_me.src})` }}
     >
       {/* 부모의 대각선 그라데이션을 살리기 위해 부분 투명 오버레이만 사용 */}
@@ -23,7 +23,7 @@ const IntroSection = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute top-8 right-8 z-50 flex gap-4"
+        className="absolute top-4 md:top-8 right-4 md:right-8 z-50 flex gap-3 md:gap-4"
         style={{ pointerEvents: "auto" }}
       >
         <Link 
@@ -33,7 +33,7 @@ const IntroSection = () => {
           className="text-white hover:text-yellow-400 transition-colors"
           aria-label="GitHub Profile"
         >
-          <FaGithub size={32} />
+          <FaGithub size={28} className="md:w-8 md:h-8" />
         </Link>
         <Link 
           href="https://www.linkedin.com/in/sungheon-lee-ab6a86227" 
@@ -42,14 +42,14 @@ const IntroSection = () => {
           className="text-white hover:text-yellow-400 transition-colors"
           aria-label="LinkedIn Profile"
         >
-          <FaLinkedin size={32} />
+          <FaLinkedin size={28} className="md:w-8 md:h-8" />
         </Link>
         <Link 
           href="mailto:9916bernard@gmail.com" 
           className="text-white hover:text-yellow-400 transition-colors"
           aria-label="Email Contact"
         >
-          <MdEmail size={34} />
+          <MdEmail size={30} className="md:w-[34px] md:h-[34px]" />
         </Link>
       </motion.div>
 
@@ -63,7 +63,7 @@ const IntroSection = () => {
           className="absolute"
           style={{ top: "1%", left: "1%" }}
         >
-          <Image src={logo} alt="Logo" width={400} height={100} />
+          <Image src={logo} alt="Logo" width={250} height={100} className="w-[200px] sm:w-[300px] md:w-[400px]" />
         </motion.div>
 
         {/* TEXT - Slide Up Effect */}
@@ -71,7 +71,7 @@ const IntroSection = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="absolute text-white text-8xl font-extrabold"
+          className="absolute text-white text-4xl sm:text-6xl md:text-8xl font-extrabold"
           style={{ top: "15%", left: "10%" }}
         >
           SUNGHEON
@@ -81,8 +81,8 @@ const IntroSection = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="absolute text-yellow-400 text-7xl font-extrabold"
-          style={{ top: "20%", left: "30%" }}
+          className="absolute text-yellow-400 text-3xl sm:text-5xl md:text-7xl font-extrabold"
+          style={{ top: "20%", left: "15%" }}
         >
           Bernard
         </motion.p>
@@ -92,7 +92,7 @@ const IntroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1 }}
-          className="absolute text-white text-xl font-medium max-w-md leading-relaxed"
+          className="absolute text-white text-sm sm:text-base md:text-xl font-medium max-w-[280px] sm:max-w-[350px] md:max-w-md leading-relaxed"
           style={{
             bottom: "5%",
             right: "5%",
@@ -126,10 +126,10 @@ const IntroSection = () => {
           </p>
 
           {/* Bullet Points */}
-          <h3 className="text-yellow-400 font-bold text-2xl mt-6 mb-2">
+          <h3 className="text-yellow-400 font-bold text-lg sm:text-xl md:text-2xl mt-4 md:mt-6 mb-1 md:mb-2">
             Highlights
           </h3>
-          <ul className="list-disc ml-5 space-y-1">
+          <ul className="list-disc ml-4 md:ml-5 space-y-0.5 md:space-y-1">
             <li>
               <span className="text-yellow-400">Penn State</span> – B.S. in Computer Science, graduating{" "}
               <span className="font-bold">Spring 2026</span>

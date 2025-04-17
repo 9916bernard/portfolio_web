@@ -21,7 +21,6 @@ export const useScrollSpy = (ids: string[], options?: IntersectionObserverInit):
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
             if (id) {
-              console.log(`Section ${id} intersecting: ratio ${entry.intersectionRatio}`);
               setActiveId(id);
             }
           }

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import BackButton from "../BackButton";
 import PageTransition from "../PageTransition";
+import Image from "next/image";
 
 // 배경 이미지 (예: /assets/image/plo_bg.jpg)
 import plo_bg from "../../assets/image/plo_bg.jpg";
@@ -64,10 +65,13 @@ export default function PLOContent() {
               </div>
               {/* 오른쪽: 이미지 영역 */}
               <div className="md:w-1/2 flex justify-center items-center">
-                <img
-                  src={plo_lions.src}
+                <Image
+                  src={plo_lions}
                   alt="Lions Market"
+                  width={400}
+                  height={300}
                   className="w-full max-w-sm rounded-xl shadow-lg"
+                  priority
                 />
               </div>
             </section>
@@ -97,10 +101,13 @@ export default function PLOContent() {
               </div>
               {/* 오른쪽: 이미지 영역 */}
               <div className="md:w-1/2 flex justify-center items-center">
-                <img
-                  src={plo_penncil.src}
+                <Image
+                  src={plo_penncil}
                   alt="Penncil"
+                  width={400}
+                  height={300}
                   className="w-full max-w-sm rounded-xl shadow-lg"
+                  priority
                 />
               </div>
             </section>

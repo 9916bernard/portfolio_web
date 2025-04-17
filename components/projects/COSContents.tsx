@@ -30,11 +30,12 @@ const OnDemandVideo = memo(({ src, className }: OnDemandVideoProps) => {
         <div className="w-full h-full aspect-video rounded-xl bg-black flex items-center justify-center">
           <button
             onClick={handlePlay}
-            className="flex items-center justify-center bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-6 transition duration-200 shadow-lg"
+            className="flex items-center justify-center bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 md:p-6 transition duration-200 shadow-lg"
+            aria-label="Play video"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-10 h-10 text-black"
+              className="w-8 h-8 md:w-10 md:h-10 text-black"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
@@ -49,13 +50,14 @@ const OnDemandVideo = memo(({ src, className }: OnDemandVideoProps) => {
           autoPlay
           preload="metadata"
           className="rounded-xl w-full max-w-md"
+          playsInline // 모바일 기기에서 비디오가 전체 화면으로 재생되지 않도록
         />
       )}
     </div>
   );
 });
 
-OnDemandVideo.displayName = "OnDemandVideo"; // ✅ 해결: react/display-name
+OnDemandVideo.displayName = "OnDemandVideo";
 
 export default function COSContext() {
   const router = useRouter();
@@ -69,91 +71,68 @@ export default function COSContext() {
         <div className="absolute inset-0 bg-black/70 z-10 pointer-events-none"></div>
         <BackButton onClick={() => router.back()} />
 
-        <div className="relative z-20 w-full max-w-6xl mx-auto px-6 pt-24 pb-32 text-white">
-          <h1 className="text-center text-7xl md:text-8xl font-extrabold mb-6 drop-shadow-lg">
+        <div className="relative z-20 w-full max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-24 pb-16 md:pb-32 text-white">
+          <h1 className="text-center text-5xl sm:text-6xl md:text-8xl font-extrabold mb-4 md:mb-6 drop-shadow-lg">
             Cosmic Survivor
           </h1>
-          <h2 className="text-center text-2xl md:text-3xl mb-12 drop-shadow-md">
+          <h2 className="text-center text-xl sm:text-2xl md:text-3xl mb-8 md:mb-12 drop-shadow-md">
             A Base-Defense Survival Game
           </h2>
-          <p className="text-center text-sm text-gray-300 mb-12">
+          <p className="text-center text-xs md:text-sm text-gray-300 mb-8 md:mb-12">
             (All videos have been optimized for fast loading by adjusting their resolution.)
           </p>
 
-          <div className="bg-black/60 p-8 rounded-xl shadow-xl mb-12">
-            <section className="mb-12">
-              <h3 className="text-4xl font-semibold mb-4 border-b-2 border-gray-400 pb-2 text-left">
-                Introduction
-              </h3>
-              <div className="bg-black/50 p-4 rounded-lg">
-                <p className="text-base leading-relaxed mb-4">
-                  🚀 Cosmic Survivor is a base-defense survival game inspired by the Vampire Survivors genre, featuring strategic base expansion, real-time combat, and upgrade mechanics. I&apos;ve included various weapons, turrets, and enemies, with a procedurally expanding map and permanent progression elements.
-                </p>
-                <p className="text-base leading-relaxed mb-4">
-                  Here are some of the key features already implemented:
-                </p>
-                <ul className="list-disc list-inside mb-4">
-                  <li>Dual Language Support: Seamless switch between Korean &amp; English.</li>
-                  <li>Base Expansion Mechanics: Defend and expand an infinitely scalable base.</li>
-                  <li>Diverse Arsenal: 10+ weapons and 10+ deployable turrets.</li>
-                  <li>Permanent Player Progression: Upgrade your spaceship permanently.</li>
-                  <li>Control Stick Motion Recognition: Double-tap &amp; lateral swipe for boosts &amp; dodge.</li>
-                  <li>Endless Procedural Map: A continuously expanding world with no boundaries.</li>
-                  <li>Guided Navigation: Directional arrow leading back to the base.</li>
-                  <li>Randomized Resource Gathering: Collect minerals for permanent upgrades.</li>
-                  <li>Dynamic Enemies &amp; Bosses: 6 unique enemy units that get stronger over time.</li>
-                  <li>In-Game Tutorial: Step-by-step introduction to mechanics.</li>
-                </ul>
-                <p className="text-base leading-relaxed mb-4">
-                  Planned features include more weapons, additional playable spaceships, and new abilities. Currently, it&apos;s at an Alpha Prototype stage, but the core mechanics are fully implemented.
-                </p>
+          <div className="bg-black/60 p-4 md:p-8 rounded-xl shadow-xl">
+            {/* 개요 섹션 */}
+            <section className="mb-8 md:mb-12">
+              <div className="flex items-center mb-4 border-b-2 border-gray-400 pb-2">
+                <h3 className="text-3xl md:text-4xl font-semibold">Overview</h3>
               </div>
+              <p className="text-sm md:text-base leading-relaxed mb-4">
+                <span className="text-yellow-400 font-bold">Cosmic Survivor</span> is a thrilling 2D base-defense survival game where players fend off waves of intergalactic enemies. Featuring pixel art, a level-up system, dynamic weapons, and a formidable final boss, I single-handedly developed this game using C# and Unity.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed mb-4">
+                As a self-directed passion project, I managed the entire development pipeline—from initial concept to final deployment on Android devices via Google Play Store. This project was a fantastic opportunity to push my programming skills and see a complete game through from start to finish.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed">
+                <span className="text-yellow-400 font-bold">Tech Stack:</span> Unity, C#, Google Play Console
+              </p>
             </section>
-          </div>
 
-          <div className="border border-gray-600 p-6 rounded-lg bg-black/60">
-            {/* Start */}
+            {/* 게임 섹션들 */}
             <Section
-              title="Start"
-              description="This is where the adventure begins! From language settings to rankings, upgrades, tutorials, and shops, the start screen lays the foundation for your gameplay. An ad banner is displayed at the top. Press start when you&apos;re ready for action."
+              title="Game Startup"
+              description="The game begins with the player choosing their ship and entering the cosmic battlefield. I implemented a smooth start sequence with clear UI elements to introduce players to the controls and objectives."
               src={COS_START}
-              caption="The start screen: language toggle, shop, and more."
+              caption="Initial gameplay showing player controls and basic mechanics"
             />
-            <hr className="border-gray-600 mb-12" />
 
-            {/* Level Up */}
             <Section
-              title="Level Up"
-              description="Leveling up is at the heart of Cosmic Survivor. Defeat enemies to gain experience and unlock upgrades for your weapons and turrets—each choice drastically reshapes your playstyle."
+              title="Level-Up System"
+              description="Players earn experience by destroying enemies, allowing them to level up and choose from randomized power-ups. I developed a balanced progression system that scales difficulty while giving players strategic choices."
               src={COS_LEVEL_UP}
-              caption="Level up screen: choose new abilities or enhance turrets."
+              caption="Level-up interface showing power-up options"
             />
-            <hr className="border-gray-600 mb-12" />
 
-            {/* Combat */}
             <Section
-              title="Combat"
-              description="In the heat of battle, combat becomes the ultimate test. Surrounded by hordes of enemies, your strategic placement of turrets and upgraded weapons will decide your fate."
+              title="Group Combat"
+              description="As the game progresses, players face increasingly numerous enemy waves. I designed different enemy types with unique movement patterns and attack behaviors to create engaging combat scenarios."
               src={COS_GROUP_KILL}
-              caption="Mid-game action: group kills and turret support."
+              caption="Player fighting against multiple enemy types simultaneously"
             />
-            <hr className="border-gray-600 mb-12" />
 
-            {/* Boss */}
             <Section
-              title="Boss"
-              description="Occasionally, a formidable Boss appears, evolving its attack patterns as you progress. Defeating a boss rewards you with rare upgrades and crucial resources."
+              title="Boss Battle"
+              description="The ultimate challenge comes in the form of a massive boss fight. I crafted a multi-phase boss with distinctive attack patterns that tests players' skills and rewards strategic gameplay."
               src={COS_BOSS}
-              caption="Boss encounter: evolves with new patterns over time."
+              caption="Epic confrontation with the final boss"
             />
-            <hr className="border-gray-600 mb-12" />
 
-            {/* Final */}
             <Section
-              title="Final"
-              description="Witness the chaos of late-game where multiple upgraded weapons clash with overwhelming enemy forces. This is where your base-building strategy truly shines."
+              title="Victory Screen"
+              description="Upon defeating the boss, players are rewarded with a satisfying victory screen showcasing their achievements. I implemented stat tracking to give players a sense of accomplishment and encourage replays."
               src={COS_FINAL}
-              caption="Late-game madness: upgraded weapons &amp; overwhelming enemies."
+              caption="Victory screen displaying player statistics"
             />
           </div>
         </div>
@@ -174,14 +153,14 @@ function Section({
   caption: string;
 }) {
   return (
-    <section className="mb-12">
+    <section className="mb-8 md:mb-12">
       <div className="flex items-center mb-4 border-b-2 border-gray-400 pb-2">
-        <h3 className="text-4xl font-semibold">{title}</h3>
+        <h3 className="text-2xl md:text-4xl font-semibold">{title}</h3>
       </div>
-      <div className="flex flex-col md:flex-row gap-8 items-center">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
         <div className="md:w-1/2 text-left">
-          <div className="bg-black/50 p-4 rounded-lg">
-            <p className="text-base leading-relaxed mb-4">{description}</p>
+          <div className="bg-black/50 p-3 md:p-4 rounded-lg">
+            <p className="text-sm md:text-base leading-relaxed mb-4">{description}</p>
           </div>
         </div>
         <div className="md:w-1/2 flex flex-col justify-center items-center">
@@ -189,7 +168,7 @@ function Section({
             src={src}
             className="rounded-xl shadow-2xl transform hover:scale-105 transition duration-300 w-full max-w-md"
           />
-          <p className="text-gray-400 text-sm mt-2">{caption}</p>
+          <p className="text-gray-400 text-xs md:text-sm mt-2">{caption}</p>
           <p className="text-gray-400 text-xs mt-1">
             (Video resolution optimized for fast loading.)
           </p>
