@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import bg_me from "../../assets/image/bg_me_rm_2.jpeg";
 import logo from "../../assets/image/logo-transparent-png.png";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const IntroSection = () => {
   return (
@@ -14,6 +17,41 @@ const IntroSection = () => {
     >
       {/* 부모의 대각선 그라데이션을 살리기 위해 부분 투명 오버레이만 사용 */}
       <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
+
+      {/* Contact Icons - Top Right */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+        className="absolute top-8 right-8 z-50 flex gap-4"
+        style={{ pointerEvents: "auto" }}
+      >
+        <Link 
+          href="https://github.com/9916bernard" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-yellow-400 transition-colors"
+          aria-label="GitHub Profile"
+        >
+          <FaGithub size={32} />
+        </Link>
+        <Link 
+          href="https://www.linkedin.com/in/sungheon-lee-ab6a86227" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-yellow-400 transition-colors"
+          aria-label="LinkedIn Profile"
+        >
+          <FaLinkedin size={32} />
+        </Link>
+        <Link 
+          href="mailto:9916bernard@gmail.com" 
+          className="text-white hover:text-yellow-400 transition-colors"
+          aria-label="Email Contact"
+        >
+          <MdEmail size={34} />
+        </Link>
+      </motion.div>
 
       {/* Animated Content */}
       <div className="absolute inset-0 z-30 pointer-events-none">
