@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import bg_me from "../../assets/image/bg_me_rm_2.jpeg";
-import logo from "../../assets/image/logo-transparent-png.png";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import TypingAnimation from "../TypingAnimation";
 
 const IntroSection = () => {
   return (
@@ -18,12 +18,12 @@ const IntroSection = () => {
       {/* 부모의 대각선 그라데이션을 살리기 위해 부분 투명 오버레이만 사용 */}
       <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
 
-      {/* Contact Icons - Top Right */}
+      {/* Contact Icons - Top Left */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute top-4 md:top-8 right-4 md:right-8 z-50 flex gap-3 md:gap-4"
+        className="absolute top-4 md:top-8 left-4 md:left-8 z-50 flex gap-3 md:gap-4"
         style={{ pointerEvents: "auto" }}
       >
         <Link 
@@ -33,7 +33,7 @@ const IntroSection = () => {
           className="text-white hover:text-yellow-400 transition-colors"
           aria-label="GitHub Profile"
         >
-          <FaGithub size={28} className="md:w-8 md:h-8" />
+          <FaGithub size={32} className="md:w-10 md:h-10" />
         </Link>
         <Link 
           href="https://www.linkedin.com/in/sungheon-lee-ab6a86227" 
@@ -42,28 +42,36 @@ const IntroSection = () => {
           className="text-white hover:text-yellow-400 transition-colors"
           aria-label="LinkedIn Profile"
         >
-          <FaLinkedin size={28} className="md:w-8 md:h-8" />
+          <FaLinkedin size={32} className="md:w-10 md:h-10" />
         </Link>
         <Link 
           href="mailto:9916bernard@gmail.com" 
           className="text-white hover:text-yellow-400 transition-colors"
           aria-label="Email Contact"
         >
-          <MdEmail size={30} className="md:w-[34px] md:h-[34px]" />
+          <MdEmail size={34} className="md:w-[38px] md:h-[38px]" />
         </Link>
       </motion.div>
 
       {/* Animated Content */}
       <div className="absolute inset-0 z-30 pointer-events-none">
-        {/* LOGO - Fade-in Effect */}
+        {/* Coding Animation */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute"
-          style={{ top: "1%", left: "1%" }}
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="absolute text-base sm:text-lg md:text-xl font-mono"
+          style={{ top: "13%", left: "10%" }}
         >
-          <Image src={logo} alt="Logo" width={250} height={100} className="w-[200px] sm:w-[300px] md:w-[400px]" />
+          <span className="text-yellow-400">&lt;code&gt;</span>
+          <span className="text-gray-400">I build </span>
+          <TypingAnimation 
+            texts={["android/iOS apps", "websites", "games"]} 
+            typingSpeed={100} 
+            deletingSpeed={50} 
+            delayBetween={1500}
+          />
+          <span className="text-yellow-400">&lt;/code&gt;</span>
         </motion.div>
 
         {/* TEXT - Slide Up Effect */}

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: "Sungheon Bernard Lee's portfolio",
   icons: {
     icon: [
-      { url: "/logo-transparent-2.svg", sizes: "any" },
+      { url: "/sbl-logo.svg", sizes: "any" },
       { url: "/favicon-32x32.png", sizes: "32x32" },
       { url: "/favicon-16x16.png", sizes: "16x16" },
     ],
@@ -34,9 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo-transparent.ico" />
+        <link rel="icon" href="/sbl-logo.svg" sizes="any" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="/favicon-16x16.png" />
+        <link rel="shortcut icon" href="/sbl-logo.svg" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <MobileNotice>{children}</MobileNotice>
