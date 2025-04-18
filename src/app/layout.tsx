@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Sungheon Bernard Lee",
+  title: "Sungheon Bernard Lee",
   description: "Sungheon Bernard Lee's portfolio",
   icons: {
     icon: [

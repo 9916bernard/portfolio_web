@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import StarField from "../StarField";
 
 // Awards 데이터
 const awards = [
@@ -31,9 +32,10 @@ export default function AwardsSection() {
   return (
     <section
       id="awards"
-      className="relative min-h-[100vh] p-10 bg-gradient-to-b from-black to-gray-900 text-white"
+      className="relative min-h-[100vh] p-10 bg-gradient-to-b from-gray-900 to-gray-800 text-white overflow-hidden"
     >
-      <div className="py-12">
+      <StarField count={90} color="mixed" speed={0.7} />
+      <div className="py-12 relative z-10">
         <h2 className="text-5xl font-bold text-yellow-400 text-center mb-10">
           Awards &amp; Honors
         </h2>
