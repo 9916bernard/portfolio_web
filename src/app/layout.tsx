@@ -32,13 +32,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-black" style={{ backgroundColor: 'black' }}>
       <head>
         <link rel="icon" href="/sbl-logo.svg" sizes="any" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/sbl-logo.svg" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body 
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
+        suppressHydrationWarning={true}
+        style={{ backgroundColor: 'black' }}
+      >
         <MobileNotice>{children}</MobileNotice>
         {/* Vercel Analytics: 페이지뷰, 사용자 디바이스 정보 자동 수집 */}
         <Analytics />

@@ -45,7 +45,7 @@ const ContactSection = () => {
 
       {/* 오른쪽 하단 작은 문구 */}
       <div className="absolute bottom-4 right-4 text-xs text-gray-500 italic z-10">
-        Built with Next.js, React, and Tailwind CSS By Sungheon Bernard Lee
+        Built and Designed By Sungheon Bernard Lee
       </div>
     </section>
   );

@@ -11,8 +11,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
   const [barPosition, setBarPosition] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // 클라이언트 사이드에서만 실행
+    setIsClient(true);
+    
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -37,6 +41,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
 
   const handleLinkClick = (sectionId: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    if (!isClient) return;
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -58,6 +64,29 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // SSR 중에는 기본 상태로 렌더링
+  if (!isClient) {
+    return (
+      <div className="fixed transition-all duration-300 ease-out flex flex-col space-y-4 items-center z-50 absolute right-10 opacity-20 hover:opacity-100">
+        <a href="#intro" className={getLinkClass("intro")}>
+          Intro
+        </a>
+        <a href="#projects" className={getLinkClass("projects")}>
+          Projects
+        </a>
+        <a href="#experiences" className={getLinkClass("experiences")}>
+          Experiences
+        </a>
+        <a href="#awards" className={getLinkClass("awards")}>
+          Awards
+        </a>
+        <a href="#contact" className={getLinkClass("contact")}>
+          Contact
+        </a>
+      </div>
+    );
+  }
 
   return (
     <>

@@ -1,0 +1,56 @@
+# Cursor Rules for Portfolio Web Project
+
+## Core Rules
+1. **Strict Modification Policy**: Only modify parts explicitly specified by the user
+2. **Text Preservation**: Never modify existing text content unless explicitly requested
+3. **File Operations**: Always ask for permission before creating or deleting files
+
+## Code Style & Standards
+4. **TypeScript**: Use strict TypeScript with proper type annotations
+5. **React/Next.js**: Follow React best practices and Next.js 13+ app router conventions
+6. **Component Structure**: Use functional components with hooks
+7. **Import Organization**: Group imports (React, external libraries, internal components, types)
+
+## Styling & UI
+8. **Tailwind CSS**: Use Tailwind CSS for styling, prefer utility classes over custom CSS
+9. **Responsive Design**: Ensure mobile-first responsive design
+10. **Accessibility**: Maintain proper accessibility standards (ARIA labels, semantic HTML)
+11. **Color Theme**: Use black/yellow theme consistently:
+    - Primary: Black (`bg-black`, `text-black`)
+    - Accent: Yellow (`bg-yellow-400`, `bg-yellow-500`, `text-yellow-400`)
+    - Background: Black (`bg-black`)
+    - Text: White (`text-white`) or Yellow (`text-yellow-400`)
+    - Avoid blue/purple colors unless specifically requested
+
+## Project-Specific Rules
+12. **Component Location**: Place new components in appropriate directories:
+    - General components: `/components/`
+    - Project-specific: `/components/projects/`
+    - Section components: `/components/sections/`
+13. **Asset Management**: Use existing assets in `/assets/` and `/public/` directories
+14. **Data Structure**: Follow existing patterns in `/data/` for project information
+
+## Code Quality
+15. **Error Handling**: Implement proper error boundaries and error handling
+16. **Performance**: Optimize for performance (lazy loading, image optimization)
+17. **SEO**: Maintain proper meta tags and SEO optimization
+18. **Clean Code**: Write readable, maintainable code with clear naming conventions
+
+## File Naming & Organization
+19. **Naming Convention**: Use PascalCase for components, camelCase for functions/variables
+20. **File Extensions**: Use `.tsx` for React components, `.ts` for utilities/types
+21. **Directory Structure**: Follow existing project structure and conventions
+
+## Dependencies
+22. **Package Management**: Don't add new dependencies without explicit permission
+23. **Version Compatibility**: Ensure compatibility with existing Next.js, React, and TypeScript versions
+
+## Testing & Validation
+24. **Type Safety**: Maintain strict TypeScript compliance
+25. **Build Validation**: Ensure code compiles without errors
+26. **Linting**: Follow ESLint rules and maintain code quality standards
+
+## Communication
+27. **Clarification**: Ask for clarification if requirements are unclear
+28. **Progress Updates**: Provide clear updates on implementation progress
+29. **Alternative Suggestions**: Suggest improvements when appropriate, but don't implement without permission

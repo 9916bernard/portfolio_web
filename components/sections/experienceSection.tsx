@@ -61,12 +61,12 @@ const ExperiencesSection = () => {
         <div className="border-l-4 border-yellow-400 pl-5 relative">
           <h3 className="text-2xl font-bold">
             2025 Summer, Fall Internship{" "}
-            <span className="text-yellow-400">@ Your Company</span>
+            <span className="text-yellow-400">@ Yanadoo</span>
           </h3>
-          <p className="text-gray-300">Preferred Location: USA or Korea | May 2025 - Dec 2025</p>
+          <p className="text-gray-300"> Location: Korea | May 2025 - Dec 2025</p>
           <ul className="list-disc ml-5 mt-2 text-gray-300">
-            <li>Actively seeking a Software Engineering Intern role</li>
-            <li>Eager to gain more experience and further enhance my skills</li>
+            <li>Will be updated soon</li>
+
           </ul>
         </div>
       </div>

@@ -2,9 +2,12 @@ import { useState, useEffect, useCallback } from 'react';
 
 export const useScrollSpy = (ids: string[], options?: IntersectionObserverInit): string => {
   const [activeId, setActiveId] = useState<string>('');
+  const [isClient, setIsClient] = useState(false);
 
   // useCallback을 사용하여 함수 인스턴스 유지
   const createObserver = useCallback(() => {
+    if (!isClient) return [];
+    
     const observerOptions: IntersectionObserverInit = {
       threshold: 0.5, // 50% 보이면 활성화
       ...options,
@@ -35,9 +38,16 @@ export const useScrollSpy = (ids: string[], options?: IntersectionObserverInit):
     
     observers.push(observer);
     return observers;
-  }, [ids, options]);
+  }, [ids, options, isClient]);
 
   useEffect(() => {
+    // 클라이언트 사이드에서만 실행
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+    
     // 초기 상태 설정
     if (ids.length > 0 && !activeId) {
       setActiveId(ids[0]);
@@ -48,7 +58,7 @@ export const useScrollSpy = (ids: string[], options?: IntersectionObserverInit):
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, [ids, activeId, createObserver]);
+  }, [ids, activeId, createObserver, isClient]);
 
   return activeId;
 };
