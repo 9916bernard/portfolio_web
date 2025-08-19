@@ -6,6 +6,14 @@ import StarField from "../StarField";
 // Awards 데이터
 const awards = [
   {
+    title: "Yanadoo chatbot contest | 2nd place",
+    highlights: [
+      "Created onboarding email chatbot utilizing n8n",
+      "Integrated OpenAI LLM, Supabase database, and Google Cloud services",
+      "Implemented vector search and email automation for seamless user onboarding",
+    ],
+  },
+  {
     title: "DataFest 2024 | Best in Show - Team Leader",
     link: "https://datafest.psu.edu/_2024/",
     highlights: [
@@ -15,14 +23,14 @@ const awards = [
     ],
   },
   {
-    title: "Dean's List (5/6 Semesters)",
+    title: "Dean's List (6/7 Semesters)",
     highlights: ["Recognized for outstanding academic performance at Penn State."],
   },
   {
-    title: "2025 Spring Hackathon",
+    title: "2026 Spring Hackathon",
     isComingSoon: true,
     highlights: [
-      "Preparing to participate in a major hackathon event in Spring 2025.",
+      "Preparing to participate in a major hackathon event in Spring 2026.",
       "Stay tuned for updates on new ideas and innovative solutions!",
     ],
   },

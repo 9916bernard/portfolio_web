@@ -51,6 +51,7 @@ const OnDemandVideo = memo(({ src, className }: OnDemandVideoProps) => {
           preload="metadata"
           className="rounded-xl w-full max-w-md"
           playsInline // 모바일 기기에서 비디오가 전체 화면으로 재생되지 않도록
+          muted
         />
       )}
     </div>
@@ -76,10 +77,10 @@ export default function COSContext() {
             Cosmic Survivor
           </h1>
           <h2 className="text-center text-xl sm:text-2xl md:text-3xl mb-8 md:mb-12 drop-shadow-md">
-            A Base-Defense Survival Game
+            Base-Defense Survival Game
           </h2>
           <p className="text-center text-xs md:text-sm text-gray-300 mb-8 md:mb-12">
-            (All videos have been optimized for fast loading by adjusting their resolution.)
+            (Videos have optimized resolution)
           </p>
 
           <div className="bg-black/60 p-4 md:p-8 rounded-xl shadow-xl">
@@ -89,10 +90,10 @@ export default function COSContext() {
                 <h3 className="text-3xl md:text-4xl font-semibold">Overview</h3>
               </div>
               <p className="text-sm md:text-base leading-relaxed mb-4">
-                <span className="text-yellow-400 font-bold">Cosmic Survivor</span> is a thrilling 2D base-defense survival game where players fend off waves of intergalactic enemies. Featuring pixel art, a level-up system, dynamic weapons, and a formidable final boss, I single-handedly developed this game using C# and Unity.
+                <span className="text-yellow-400 font-bold">Cosmic Survivor</span> is a base-defense survival game inspired by the Vampire Survivors genre, featuring strategic base expansion, real-time combat, and upgrade mechanics. The game includes a variety of weapons, turrets, and enemies, with procedurally expanding maps and permanent progression elements.
               </p>
               <p className="text-sm md:text-base leading-relaxed mb-4">
-                As a self-directed passion project, I managed the entire development pipeline—from initial concept to final deployment on Android devices via Google Play Store. This project was a fantastic opportunity to push my programming skills and see a complete game through from start to finish.
+                As a self-directed passion project, I managed the entire development pipeline—from initial concept to alpha test. This project was a fantastic opportunity to push my programming skills and see a complete game through from start to finish.
               </p>
               <p className="text-sm md:text-base leading-relaxed">
                 <span className="text-yellow-400 font-bold">Tech Stack:</span> Unity, C#, Google Play Console
@@ -102,9 +103,9 @@ export default function COSContext() {
             {/* 게임 섹션들 */}
             <Section
               title="Game Startup"
-              description="The game begins with the player choosing their ship and entering the cosmic battlefield. I implemented a smooth start sequence with clear UI elements to introduce players to the controls and objectives."
+              description="The game implements a comprehensive tutorial system with step-by-step introduction to mechanics. Dual language support allows seamless switching between Korean and English. The system includes integrated advertising with ad removal functionality, providing a complete monetization framework."
               src={COS_START}
-              caption="Initial gameplay showing player controls and basic mechanics"
+              caption="Tutorial system and dual language interface implementation"
             />
 
             <Section
@@ -117,7 +118,7 @@ export default function COSContext() {
             <Section
               title="Group Combat"
               description="As the game progresses, players face increasingly numerous enemy waves. I designed different enemy types with unique movement patterns and attack behaviors to create engaging combat scenarios."
-              src={COS_GROUP_KILL}
+              src={COS_FINAL}
               caption="Player fighting against multiple enemy types simultaneously"
             />
 
@@ -126,13 +127,6 @@ export default function COSContext() {
               description="The ultimate challenge comes in the form of a massive boss fight. I crafted a multi-phase boss with distinctive attack patterns that tests players' skills and rewards strategic gameplay."
               src={COS_BOSS}
               caption="Epic confrontation with the final boss"
-            />
-
-            <Section
-              title="Victory Screen"
-              description="Upon defeating the boss, players are rewarded with a satisfying victory screen showcasing their achievements. I implemented stat tracking to give players a sense of accomplishment and encourage replays."
-              src={COS_FINAL}
-              caption="Victory screen displaying player statistics"
             />
           </div>
         </div>
