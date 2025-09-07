@@ -3,42 +3,49 @@ import { useState, useEffect, useCallback } from 'react';
 export const useScrollSpy = (ids: string[], options?: IntersectionObserverInit): string => {
   const [activeId, setActiveId] = useState<string>('');
   const [isClient, setIsClient] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // useCallback을 사용하여 함수 인스턴스 유지
-  const createObserver = useCallback(() => {
-    if (!isClient) return [];
+  // 스크롤 기반 섹션 감지 함수
+  const updateActiveSection = useCallback(() => {
+    if (!isClient) return;
     
-    const observerOptions: IntersectionObserverInit = {
-      threshold: 0.5, // 50% 보이면 활성화
-      ...options,
-    };
-
-    const observers: IntersectionObserver[] = [];
     const elements = ids.map(id => document.getElementById(id)).filter(Boolean);
+    if (elements.length === 0) return;
     
-    if (elements.length === 0) return [];
+    const currentScrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
     
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            if (id) {
-              setActiveId(id);
-            }
-          }
-        });
-      },
-      observerOptions
-    );
+    // 각 섹션의 위치 계산
+    const sections = elements.map(element => ({
+      id: element.id,
+      top: element.offsetTop,
+      bottom: element.offsetTop + element.offsetHeight,
+      center: element.offsetTop + element.offsetHeight / 2
+    }));
     
-    elements.forEach(element => {
-      if (element) observer.observe(element);
-    });
+    // 현재 뷰포트 중앙에 가장 가까운 섹션 찾기
+    const viewportCenter = currentScrollY + windowHeight / 2;
+    let closestSection = sections[0];
+    let minDistance = Math.abs(sections[0].center - viewportCenter);
     
-    observers.push(observer);
-    return observers;
-  }, [ids, options, isClient]);
+    for (const section of sections) {
+      const distance = Math.abs(section.center - viewportCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestSection = section;
+      }
+    }
+    
+    // 섹션이 뷰포트에 보이는지 확인 (최소 30% 보여야 함)
+    const isVisible = closestSection.top < currentScrollY + windowHeight * 0.7 && 
+                     closestSection.bottom > currentScrollY + windowHeight * 0.3;
+    
+    if (isVisible && closestSection.id !== activeId) {
+      setActiveId(closestSection.id);
+    }
+    
+    setLastScrollY(currentScrollY);
+  }, [ids, isClient, activeId]);
 
   useEffect(() => {
     // 클라이언트 사이드에서만 실행
@@ -53,12 +60,22 @@ export const useScrollSpy = (ids: string[], options?: IntersectionObserverInit):
       setActiveId(ids[0]);
     }
 
-    const observers = createObserver();
+    // 스크롤 이벤트 리스너 추가
+    const handleScroll = () => {
+      updateActiveSection();
+    };
+
+    // 초기 실행
+    updateActiveSection();
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     
     return () => {
-      observers.forEach(observer => observer.disconnect());
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
-  }, [ids, activeId, createObserver, isClient]);
+  }, [ids, isClient, activeId, updateActiveSection]);
 
   return activeId;
 };

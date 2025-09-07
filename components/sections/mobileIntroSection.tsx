@@ -166,7 +166,7 @@ const MobileIntroSection = () => {
             <li className="flex items-start">
               <span className="text-yellow-400 mr-2">•</span>
               <span>
-                Internships: Gained hands-on experience as a Developer Intern and a QA Intern at gaming companies
+                Internships: Gained hands-on experience as a Developer Intern and a QA Intern at various companies
               </span>
             </li>
             <li className="flex items-start">

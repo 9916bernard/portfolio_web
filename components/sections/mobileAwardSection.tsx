@@ -17,7 +17,6 @@ const awards = [
     link: "https://datafest.psu.edu/_2024/",
     highlights: [
       "Analyzed large-scale 'CourseKata' datasets to identify key patterns for improved educational strategies.",
-      "Utilized Python and Power BI to explore trends in student focus time and the impact of visual content.",
       "Adapted to unexpected results by refining hypotheses, ensuring actionable insights for better learning outcomes.",
     ],
   },

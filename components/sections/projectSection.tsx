@@ -14,6 +14,7 @@ interface Project {
   gitUrl?: string;
   websiteUrl?: string;
   isComingSoon?: boolean;
+  year?: string;
 }
 
 const projects: Project[] = [
@@ -24,6 +25,7 @@ const projects: Project[] = [
     tags: ["#bluetooth", "#app", "#react", "#python"],
     websiteUrl: "https://pfsdk.yanadoofitness.com/tools",
     gitUrl: "https://github.com/9916bernard/isYafit_mobile",
+    year: "2025",
   },
   {
     id: "symptomsense",
@@ -31,6 +33,7 @@ const projects: Project[] = [
     description: "AI-powered symptom checker",
     tags: ["#gemini", "#mongoDB", "#googlemap", "#openFDA", "#health"],
     gitUrl: "https://github.com/9916bernard/symptom_sense",
+    year: "2025",
   },
   {
     id: "avt",
@@ -38,6 +41,7 @@ const projects: Project[] = [
     description: "Autonomous vehicle team",
     tags: ["#ros2", "#python", "#gitlab", "#decider", "#autonomous", "#vehicle"],
     gitUrl: "https://github.com/9916bernard/avt-controls-pipeline",
+    year: "2024",
   },
   {
     id: "cosmic",
@@ -45,18 +49,20 @@ const projects: Project[] = [
     description: "Thrilling space survival game",
     tags: ["#game", "#unity", "#C#", "#googlead", "#2d"],
     gitUrl: "https://github.com/9916bernard/CosmicSurvival",
+    year: "2024",
   },
   {
     id: "plo",
     title: "PLO",
     description: "Innovative student app community",
     tags: ["#community", "#app", "#Flutter", "#Firebase", "#ios", "#android"],
+    year: "2023",
   },
   {
-    id: "momentum",
-    title: "Momentum",
-    description: "Coming Soon",
-    tags: ["#community", "#react", "#web", "#app", "#openAI", "#firebase"],
+    id: "certiai",
+    title: "CertiAI",
+    description: "Verifiable AI Outputs via Blockchain",
+    tags: ["#blockchain", "#python", "#AWS", "#PSQL"],
     isComingSoon: true,
   },
 ];
@@ -67,7 +73,7 @@ import avtLogo from "../../assets/image/avt_logo.png";
 import ploLogo from "../../assets/image/plo_logo.png";
 import symptomSenseLogo from "../../assets/image/symptomsense_logo.png";
 import pfinspectorIcon from "../../assets/pfinspector_icon.png";
-import momentumLogo from "../../assets/image/momentum_logo.jpeg";
+import certiaiLogo from "../../assets/image/certiai_logo.jpg";
 
 const logoMap: Record<string, StaticImageData> = {
   cosmic: cosmicLogo,
@@ -75,7 +81,7 @@ const logoMap: Record<string, StaticImageData> = {
   plo: ploLogo,
   symptomsense: symptomSenseLogo,
   pfinspector: pfinspectorIcon,
-  momentum: momentumLogo,
+  certiai: certiaiLogo,
 };
 
 // Git 아이콘 SVG 컴포넌트
@@ -123,7 +129,12 @@ const ProjectsSection = () => {
                 style={{ aspectRatio: "1 / 1.3" }}
               >
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 text-center">{project.title}</h3>
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-white text-center">{project.title}</h3>
+                    {project.year && (
+                      <span className="text-yellow-400 text-sm md:text-base font-semibold">({project.year})</span>
+                    )}
+                  </div>
                   <p className="text-sm md:text-md text-gray-300 text-center">{project.description}</p>
                 </div>
 

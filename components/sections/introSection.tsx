@@ -149,7 +149,7 @@ const IntroSection = () => {
               <span className="text-yellow-400">autonomous vehicle</span> systems
             </li>
             <li>
-              Internships: Gained hands-on experience as a Developer Intern and a QA Intern at gaming companies
+              Internships: Gained hands-on experience as a Developer Intern and a QA Intern at various companies
             </li>
             <li>
               Awarded <span className="text-yellow-400 font-bold">DataFest Best in Show</span> for analytical insights
