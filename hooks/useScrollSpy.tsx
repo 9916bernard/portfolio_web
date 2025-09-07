@@ -9,7 +9,7 @@ export const useScrollSpy = (ids: string[], options?: IntersectionObserverInit):
   const updateActiveSection = useCallback(() => {
     if (!isClient) return;
     
-    const elements = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const elements = ids.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     if (elements.length === 0) return;
     
     const currentScrollY = window.scrollY;
