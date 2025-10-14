@@ -62,7 +62,7 @@ const projects: Project[] = [
     id: "certiai",
     title: "CertiAI",
     description: "Verifiable AI Outputs via Blockchain",
-    tags: ["#blockchain", "#python", "#AWS", "#PSQL"],
+    tags: ["#blockchain", "#python", "#research", "#LLM"],
     isComingSoon: true,
   },
 ];
