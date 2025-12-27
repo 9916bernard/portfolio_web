@@ -6,7 +6,6 @@ import PageTransition from "../PageTransition";
 import LineLimitedParagraph from "../LineLimitedParagraph";
 import React from "react";
 import Image from "next/image";
-import sym_bg from "../../assets/image/symptomsense_bg.jpg";
 import sym_1 from "../../assets/image/sym_1.png";
 import sym_2 from "../../assets/image/sym_2.png";
 
@@ -16,10 +15,9 @@ export default function SymptomSenseContent() {
   return (
     <PageTransition>
       <div
-        className="relative min-h-[200vh] bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: `url(${sym_bg.src})` }}
+        className="relative min-h-[200vh] bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950"
       >
-        <div className="absolute inset-0 bg-black/70 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-transparent to-transparent z-10 pointer-events-none" />
 
         <BackButton onClick={() => router.back()} />
 

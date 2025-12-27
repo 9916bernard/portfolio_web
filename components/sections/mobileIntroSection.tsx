@@ -16,12 +16,7 @@ const MobileIntroSection = () => {
     >
 
       {/* 상단 소셜 미디어 아이콘 */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="relative z-50 flex gap-4 mt-8"
-      >
+      <div className="relative z-50 flex gap-4 mt-8">
         <Link 
           href="https://github.com/9916bernard" 
           target="_blank"
@@ -47,54 +42,34 @@ const MobileIntroSection = () => {
         >
           <MdEmail size={30} />
         </Link>
-      </motion.div>
+      </div>
 
       {/* 메인 콘텐츠 */}
       <div className="relative z-30 flex flex-col items-center justify-center flex-1 w-full max-w-sm">
         {/* 코딩 애니메이션 */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="text-center mb-6"
-        >
+        <div className="text-center mb-6">
           <span className="text-yellow-400 text-lg font-mono">&lt;code&gt;</span>
           <span className="text-gray-300 text-lg font-mono">I build </span>
-          <TypingAnimation 
-            texts={["apps", "websites", "games"]} 
-            typingSpeed={100} 
-            deletingSpeed={50} 
+          <TypingAnimation
+            texts={["apps", "websites", "games"]}
+            typingSpeed={100}
+            deletingSpeed={50}
             delayBetween={1500}
           />
           <span className="text-yellow-400 text-lg font-mono">&lt;/code&gt;</span>
-        </motion.div>
+        </div>
 
         {/* 이름 */}
-        <motion.h1
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 1.1 }}
-          className="text-4xl font-extrabold text-white text-center mb-2"
-        >
+        <h1 className="text-4xl font-extrabold text-white text-center mb-2">
           SUNGHEON
-        </motion.h1>
+        </h1>
 
-        <motion.h2
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 1.4 }}
-          className="text-3xl font-extrabold text-yellow-400 text-center mb-6"
-        >
+        <h2 className="text-3xl font-extrabold text-yellow-400 text-center mb-6">
           Bernard
-        </motion.h2>
+        </h2>
 
         {/* 작은 배너 이미지 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.7 }}
-          className="relative z-50 w-full max-w-xs h-32 rounded-lg overflow-hidden mb-8"
-        >
+        <div className="relative z-50 w-full max-w-xs h-32 rounded-lg overflow-hidden mb-8">
           <Image
             src={bg_me}
             alt="Profile Banner"
@@ -103,18 +78,13 @@ const MobileIntroSection = () => {
             priority
           />
           <div className="absolute inset-0 bg-black/30" />
-        </motion.div>
+        </div>
 
         {/* 소개 텍스트 */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.7 }}
-          className="text-white text-sm leading-relaxed text-center space-y-3"
-        >
+        <div className="text-white text-sm leading-relaxed text-center space-y-3">
           <p>
             Hello! I&apos;m a{" "}
-            <span className="text-yellow-400 font-bold">Software Developer</span>{" "}
+            <span className="text-yellow-400 font-bold">Software Developer / Researcher</span>{" "}
             currently pursuing my{" "}
             <span className="text-yellow-400 font-bold">
               B.S. in Computer Science
@@ -134,15 +104,10 @@ const MobileIntroSection = () => {
             —constantly pushing boundaries to discover fresh ideas and
             solutions.
           </p>
-        </motion.div>
+        </div>
 
         {/* 하이라이트 */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 2 }}
-          className="mt-6 w-full"
-        >
+        <div className="mt-6 w-full">
           <h3 className="text-yellow-400 font-bold text-lg mb-3 text-center">
             Highlights
           </h3>
@@ -157,16 +122,17 @@ const MobileIntroSection = () => {
             <li className="flex items-start">
               <span className="text-yellow-400 mr-2">•</span>
               <span>
-                Projects: Developed <span className="text-yellow-400">games</span>,{" "}
-                <span className="text-yellow-400">apps</span>,{" "}
-                <span className="text-yellow-400">websites</span>, and{" "}
-                <span className="text-yellow-400">autonomous vehicle</span> systems
+                Research: <span className="text-yellow-400">Blockchain</span> frameworks for{" "}
+                <span className="text-yellow-400">LLM traceability</span> and{" "}
+                <span className="text-yellow-400">UAV security</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-yellow-400 mr-2">•</span>
               <span>
-                Internships: Gained hands-on experience as a Developer Intern and a QA Intern at various companies
+                Projects: <span className="text-yellow-400">EPXcoin</span> blockchain,{" "}
+                <span className="text-yellow-400">BLE device inspector</span>,{" "}
+                <span className="text-yellow-400">AI health assistant</span>
               </span>
             </li>
             <li className="flex items-start">
@@ -176,15 +142,10 @@ const MobileIntroSection = () => {
               </span>
             </li>
           </ul>
-        </motion.div>
+        </div>
 
         {/* 액션 버튼들 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2.3 }}
-          className="flex flex-col gap-3 w-full mt-8"
-        >
+        <div className="flex flex-col gap-3 w-full mt-8">
           <Link href="#mobile-projects">
             <button className="w-full px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 transition-colors">
               View My Work
@@ -195,7 +156,7 @@ const MobileIntroSection = () => {
               Contact Me
             </button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

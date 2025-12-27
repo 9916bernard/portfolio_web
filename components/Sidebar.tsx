@@ -78,8 +78,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
         <a href="#experiences" className={getLinkClass("experiences")}>
           Experiences
         </a>
-        <a href="#awards" className={getLinkClass("awards")}>
-          Awards
+        <a href="#research" className={getLinkClass("research")}>
+          Research
         </a>
         <a href="#contact" className={getLinkClass("contact")}>
           Contact
@@ -141,8 +141,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
         <a href="#experiences" className={getLinkClass("experiences")} onClick={(e) => handleLinkClick("experiences", e)}>
           Experiences
         </a>
-        <a href="#awards" className={getLinkClass("awards")} onClick={(e) => handleLinkClick("awards", e)}>
-          Awards
+        <a href="#research" className={getLinkClass("research")} onClick={(e) => handleLinkClick("research", e)}>
+          Research
         </a>
         <a href="#contact" className={getLinkClass("contact")} onClick={(e) => handleLinkClick("contact", e)}>
           Contact

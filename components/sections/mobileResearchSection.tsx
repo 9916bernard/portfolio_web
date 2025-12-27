@@ -1,0 +1,122 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+
+// Research 데이터
+const publications = [
+  {
+    authors: "Sungheon Lee, M. Singh, D. Singh",
+    title: "Traceable and Immutable LLM-Generated Contents through a Blockchain Framework",
+    venue: "IET Blockchain",
+    date: "Nov 2025",
+    status: "under review",
+  },
+  {
+    authors: "M. Singh, Sungheon Lee",
+    title: "Local vs. Global Blockchain-Backed Zero Trust Framework for UAV Data Security",
+    venue: "37th IEEE Intelligent Vehicles Symposium (IV 2026)",
+    date: "Nov 2025",
+    status: "under review",
+  },
+];
+
+const researchExperience = [
+  {
+    title: "EPXcoin: Blockchain-enabled Electricity Exchange Mechanism",
+    role: "Undergraduate Researcher (Methodology Architect, MVP Developer)",
+    institution: "Penn State University",
+    period: "Aug 2025 – Dec 2025",
+  },
+  {
+    title: "Multi-Party Computation (MPC)",
+    role: "Undergraduate Researcher",
+    institution: "Penn State University",
+    period: "Spring 2026 (Upcoming)",
+    isUpcoming: true,
+  },
+];
+
+const MobileResearchSection = () => {
+  return (
+    <section
+      id="mobile-research"
+      className="relative min-h-screen p-4 pb-20 bg-gradient-to-b from-gray-900 via-gray-800 to-slate-700 text-white"
+    >
+      {/* 섹션 타이틀 */}
+      <div className="w-full text-center mb-8 mt-8">
+        <h1 className="text-3xl font-bold text-yellow-400 mb-2">Research</h1>
+      </div>
+
+      {/* Publications Section */}
+      <div className="mb-10">
+        <h2 className="text-xl font-bold text-yellow-300 mb-4">
+          Peer-Reviewed Conference/Journal Papers
+        </h2>
+        <div className="space-y-4">
+          {publications.map((pub, index) => (
+            <div
+              key={index}
+              className="bg-gray-900 rounded-lg p-4 border border-yellow-400"
+            >
+              <p className="text-gray-400 text-xs mb-2">{pub.authors}</p>
+              <h3 className="text-base font-bold text-yellow-300 mb-2">
+                &quot;{pub.title}&quot;
+              </h3>
+              <p className="text-gray-400 text-xs">
+                Submitted to <span className="text-yellow-200 font-semibold">{pub.venue}</span>, {pub.date},{" "}
+                <span className="italic">{pub.status}</span>.
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Research Experience Section */}
+      <div>
+        <h2 className="text-xl font-bold text-yellow-300 mb-4">
+          Research Experience
+        </h2>
+        <div className="space-y-4">
+          {researchExperience.map((exp, index) => (
+            <motion.div
+              key={index}
+              whileTap={{ scale: 0.98 }}
+              className={`bg-gray-900 rounded-lg p-4 border ${
+                exp.isUpcoming ? "border-gray-700 active:border-blue-500" : "border-yellow-400 active:border-yellow-300"
+              }`}
+            >
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="text-base font-bold text-yellow-300 flex-1">
+                  {exp.title}
+                </h3>
+                {exp.isUpcoming && (
+                  <motion.span
+                    className="text-xs bg-blue-500 text-white px-2 py-1 rounded-full font-semibold ml-2"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    Upcoming
+                  </motion.span>
+                )}
+              </div>
+              <p className="text-gray-300 text-sm mb-1">{exp.role}</p>
+              <div className="flex flex-col gap-1 text-xs text-gray-400">
+                <span>{exp.institution}</span>
+                <span>{exp.period}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MobileResearchSection;

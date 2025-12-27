@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
+import { motion } from "framer-motion";
 import psu_image from "../../assets/image/psu_image_res.jpg";
 
 // 프로젝트 데이터 직접 정의
@@ -23,7 +24,6 @@ const projects: Project[] = [
     title: "PFInspector",
     description: "Bluetooth data parsing, monitoring tool",
     tags: ["#bluetooth", "#app", "#react", "#python"],
-    websiteUrl: "https://pfsdk.yanadoofitness.com/tools",
     gitUrl: "https://github.com/9916bernard/isYafit_mobile",
     year: "2025",
   },
@@ -58,13 +58,6 @@ const projects: Project[] = [
     tags: ["#community", "#app", "#Flutter", "#Firebase", "#ios", "#android"],
     year: "2023",
   },
-  {
-    id: "certiai",
-    title: "CertiAI",
-    description: "Verifiable AI Outputs via Blockchain",
-    tags: ["#blockchain", "#python", "#research", "#LLM"],
-    isComingSoon: true,
-  },
 ];
 
 // 로고 이미지 import
@@ -73,7 +66,6 @@ import avtLogo from "../../assets/image/avt_logo.png";
 import ploLogo from "../../assets/image/plo_logo.png";
 import symptomSenseLogo from "../../assets/image/symptomsense_logo.png";
 import pfinspectorIcon from "../../assets/pfinspector_icon.png";
-import certiaiLogo from "../../assets/image/certiai_logo.jpg";
 
 const logoMap: Record<string, StaticImageData> = {
   cosmic: cosmicLogo,
@@ -81,7 +73,6 @@ const logoMap: Record<string, StaticImageData> = {
   plo: ploLogo,
   symptomsense: symptomSenseLogo,
   pfinspector: pfinspectorIcon,
-  certiai: certiaiLogo,
 };
 
 // Git 아이콘 SVG 컴포넌트
@@ -116,17 +107,18 @@ const ProjectsSection = () => {
 
       {/* 프로젝트 카드 */}
       <div className="relative z-20 w-full max-w-6xl px-4">
-        {/* 모든 프로젝트를 하나의 통일된 그리드로 배치 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-          {projects.map((project: Project) => {
+        {/* 첫 3개 프로젝트 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-4 md:mb-8">
+          {projects.slice(0, 3).map((project: Project, index: number) => {
             const isComingSoon = project.isComingSoon || project.description === "Coming Soon";
             const logo = logoMap[project.id];
 
             return (
-              <div
+              <motion.div
                 key={project.id}
-                className="flex flex-col justify-between p-4 md:p-6 bg-transparent rounded-xl border border-yellow-400 shadow-md hover:shadow-lg transition transform hover:-translate-y-1"
+                className="flex flex-col justify-between p-4 md:p-6 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 rounded-2xl border border-gray-700 hover:border-yellow-400/50 shadow-xl hover:shadow-2xl transition-all duration-300"
                 style={{ aspectRatio: "1 / 1.3" }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
                 <div>
                   <div className="flex items-center justify-center gap-2 mb-2">
@@ -158,7 +150,7 @@ const ProjectsSection = () => {
                       href={project.gitUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full mb-1 px-4 py-2 border border-white text-white font-semibold rounded hover:bg-white hover:text-black transition-all duration-200 text-sm md:text-base flex items-center justify-center gap-2"
+                      className="block w-full mb-2 px-4 py-2.5 border-2 border-gray-600 text-white font-semibold rounded-lg hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-sm md:text-base flex items-center justify-center gap-2"
                     >
                       <GitIcon />
                       Git
@@ -171,7 +163,7 @@ const ProjectsSection = () => {
                       href={project.websiteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-2 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition-all duration-200 text-sm md:text-base block text-center"
+                      className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 hover:shadow-lg transition-all duration-300 text-sm md:text-base block text-center"
                     >
                       <span className="relative z-10">Visit Website</span>
                       <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
@@ -183,13 +175,13 @@ const ProjectsSection = () => {
                     isComingSoon ? (
                       <button
                         disabled
-                        className="w-full mt-1 mb-2 px-4 py-2 bg-gray-500 text-white font-semibold rounded cursor-not-allowed text-sm md:text-base"
+                        className="w-full mt-1 mb-2 px-4 py-3 bg-gray-600 text-gray-300 font-semibold rounded-lg cursor-not-allowed text-sm md:text-base"
                       >
                         Coming Soon
                       </button>
                     ) : (
                       <Link href={`/projects/${project.id}`}>
-                        <button className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-2 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition-all duration-200 text-sm md:text-base">
+                        <button className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 hover:shadow-lg transition-all duration-300 text-sm md:text-base">
                           <span className="relative z-10">View Details</span>
                           <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
                         </button>
@@ -197,20 +189,120 @@ const ProjectsSection = () => {
                     )
                   )}
 
-                  <div className="mt-3 md:mt-4 flex flex-wrap gap-1 justify-center">
-                    {project.tags.slice(0, 4).map((tag: string, index: number) => (
+                  <div className="mt-3 md:mt-4 flex flex-wrap gap-2 justify-center">
+                    {project.tags.slice(0, 4).map((tag: string, tagIndex: number) => (
                       <span
-                        key={index}
-                        className="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded"
+                        key={tagIndex}
+                        className="text-xs text-gray-300 bg-gray-700/70 px-2.5 py-1 rounded-md hover:bg-gray-600 transition-colors duration-200"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
+        </div>
+
+        {/* 나머지 2개 프로젝트 - 중앙 정렬 */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 max-w-[calc(66.666%-1rem)]">
+            {projects.slice(3).map((project: Project, index: number) => {
+            const isComingSoon = project.isComingSoon || project.description === "Coming Soon";
+            const logo = logoMap[project.id];
+
+            return (
+              <motion.div
+                key={project.id}
+                className="flex flex-col justify-between p-4 md:p-6 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 rounded-2xl border border-gray-700 hover:border-yellow-400/50 shadow-xl hover:shadow-2xl transition-all duration-300"
+                style={{ aspectRatio: "1 / 1.3" }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              >
+                <div>
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-white text-center">{project.title}</h3>
+                    {project.year && (
+                      <span className="text-yellow-400 text-sm md:text-base font-semibold">({project.year})</span>
+                    )}
+                  </div>
+                  <p className="text-sm md:text-md text-gray-300 text-center">{project.description}</p>
+                </div>
+
+                {logo && (
+                  <div className="flex justify-center my-3 md:my-4">
+                    <Image
+                      src={logo}
+                      alt={`${project.title} Logo`}
+                      width={150}
+                      height={150}
+                      className="object-contain w-[120px] h-[120px] md:w-[150px] md:h-[150px]"
+                      placeholder="blur"
+                    />
+                  </div>
+                )}
+
+                <div>
+                  {/* Git 버튼 */}
+                  {project.gitUrl && (
+                    <a
+                      href={project.gitUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full mb-2 px-4 py-2.5 border-2 border-gray-600 text-white font-semibold rounded-lg hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-sm md:text-base flex items-center justify-center gap-2"
+                    >
+                      <GitIcon />
+                      Git
+                    </a>
+                  )}
+
+                  {/* Website 버튼 */}
+                  {project.websiteUrl && (
+                    <a
+                      href={project.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 hover:shadow-lg transition-all duration-300 text-sm md:text-base block text-center"
+                    >
+                      <span className="relative z-10">Visit Website</span>
+                      <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
+                    </a>
+                  )}
+
+                  {/* View Details 버튼 */}
+                  {!project.websiteUrl && (
+                    isComingSoon ? (
+                      <button
+                        disabled
+                        className="w-full mt-1 mb-2 px-4 py-3 bg-gray-600 text-gray-300 font-semibold rounded-lg cursor-not-allowed text-sm md:text-base"
+                      >
+                        Coming Soon
+                      </button>
+                    ) : (
+                      <Link href={`/projects/${project.id}`}>
+                        <button className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 hover:shadow-lg transition-all duration-300 text-sm md:text-base">
+                          <span className="relative z-10">View Details</span>
+                          <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
+                        </button>
+                      </Link>
+                    )
+                  )}
+
+                  <div className="mt-3 md:mt-4 flex flex-wrap gap-2 justify-center">
+                    {project.tags.slice(0, 4).map((tag: string, tagIndex: number) => (
+                      <span
+                        key={tagIndex}
+                        className="text-xs text-gray-300 bg-gray-700/70 px-2.5 py-1 rounded-md hover:bg-gray-600 transition-colors duration-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+          </div>
         </div>
       </div>
     </section>

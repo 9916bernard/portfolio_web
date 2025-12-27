@@ -3,7 +3,7 @@
 import MobileIntroSection from "./mobileIntroSection";
 import MobileProjectSection from "./mobileProjectSection";
 import MobileExperienceSection from "./mobileExperienceSection";
-import MobileAwardSection from "./mobileAwardSection";
+import MobileResearchSection from "./mobileResearchSection";
 import MobileContactSection from "./mobileContactSection";
 
 const MobileSectionWrapper = () => {
@@ -12,7 +12,7 @@ const MobileSectionWrapper = () => {
       <MobileIntroSection />
       <MobileProjectSection />
       <MobileExperienceSection />
-      <MobileAwardSection />
+      <MobileResearchSection />
       <MobileContactSection />
     </>
   );

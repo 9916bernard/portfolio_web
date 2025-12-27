@@ -19,13 +19,7 @@ const IntroSection = () => {
       <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
 
       {/* Contact Icons - Top Left */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute top-4 md:top-8 left-4 md:left-8 z-50 flex gap-3 md:gap-4"
-        style={{ pointerEvents: "auto" }}
-      >
+      <div className="absolute top-4 md:top-8 left-4 md:left-8 z-50 flex gap-3 md:gap-4" style={{ pointerEvents: "auto" }}>
         <Link 
           href="https://github.com/9916bernard" 
           target="_blank"
@@ -51,55 +45,34 @@ const IntroSection = () => {
         >
           <MdEmail size={34} className="md:w-[38px] md:h-[38px]" />
         </Link>
-      </motion.div>
+      </div>
 
       {/* Animated Content */}
       <div className="absolute inset-0 z-30 pointer-events-none">
         {/* Coding Animation */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="absolute text-base sm:text-lg md:text-xl font-mono"
-          style={{ top: "13%", left: "10%" }}
-        >
+        <div className="absolute text-base sm:text-lg md:text-xl font-mono" style={{ top: "13%", left: "10%" }}>
           <span className="text-yellow-400">&lt;code&gt;</span>
           <span className="text-gray-400">I build </span>
-          <TypingAnimation 
-            texts={["android/iOS apps", "websites", "games"]} 
-            typingSpeed={100} 
-            deletingSpeed={50} 
+          <TypingAnimation
+            texts={["android/iOS apps", "websites", "games"]}
+            typingSpeed={100}
+            deletingSpeed={50}
             delayBetween={1500}
           />
           <span className="text-yellow-400">&lt;/code&gt;</span>
-        </motion.div>
+        </div>
 
-        {/* TEXT - Slide Up Effect */}
-        <motion.p
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="absolute text-white text-4xl sm:text-6xl md:text-8xl font-extrabold"
-          style={{ top: "15%", left: "10%" }}
-        >
+        {/* TEXT */}
+        <p className="absolute text-white text-4xl sm:text-6xl md:text-8xl font-extrabold" style={{ top: "15%", left: "10%" }}>
           SUNGHEON
-        </motion.p>
+        </p>
 
-        <motion.p
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="absolute text-yellow-400 text-3xl sm:text-5xl md:text-7xl font-extrabold"
-          style={{ top: "20%", left: "15%" }}
-        >
+        <p className="absolute text-yellow-400 text-3xl sm:text-5xl md:text-7xl font-extrabold" style={{ top: "20%", left: "15%" }}>
           Bernard
-        </motion.p>
+        </p>
 
-        {/* PERSONAL INTRO - Fade-in Effect (Bottom Right) */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1 }}
+        {/* PERSONAL INTRO (Bottom Right) */}
+        <div
           className="absolute text-white text-sm sm:text-base md:text-xl font-medium max-w-[280px] sm:max-w-[350px] md:max-w-md leading-relaxed"
           style={{
             bottom: "5%",
@@ -109,7 +82,7 @@ const IntroSection = () => {
         >
           <p>
             Hello! I&apos;m a{" "}
-            <span className="text-yellow-400 font-bold">Software Developer</span>{" "}
+            <span className="text-yellow-400 font-bold">Software Developer / Researcher</span>{" "}
             currently pursuing my{" "}
             <span className="text-yellow-400 font-bold">
               B.S. in Computer Science
@@ -143,19 +116,20 @@ const IntroSection = () => {
               <span className="font-bold">Spring 2026</span>
             </li>
             <li>
-              Projects: Developed <span className="text-yellow-400">games</span>,{" "}
-              <span className="text-yellow-400">apps</span>,{" "}
-              <span className="text-yellow-400">websites</span>, and{" "}
-              <span className="text-yellow-400">autonomous vehicle</span> systems
+              Research: <span className="text-yellow-400">Blockchain</span> frameworks for{" "}
+              <span className="text-yellow-400">LLM traceability</span> and{" "}
+              <span className="text-yellow-400">UAV security</span>
             </li>
             <li>
-              Internships: Gained hands-on experience as a Developer Intern and a QA Intern at various companies
+              Projects: <span className="text-yellow-400">EPXcoin</span> blockchain,{" "}
+              <span className="text-yellow-400">BLE device inspector</span>,{" "}
+              <span className="text-yellow-400">AI health assistant</span>
             </li>
             <li>
               Awarded <span className="text-yellow-400 font-bold">DataFest Best in Show</span> for analytical insights
             </li>
           </ul>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

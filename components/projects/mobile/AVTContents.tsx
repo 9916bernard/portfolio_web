@@ -4,10 +4,11 @@ import { useRouter } from "next/navigation";
 import BackButton from "../../BackButton";
 import PageTransition from "../../PageTransition";
 import LineLimitedParagraph from "../../LineLimitedParagraph";
-import React, { useState, memo } from "react";
+import React, { useState, memo, useEffect } from "react";
 import Image from "next/image";
 
 import avt_group from "../../../assets/image/avt_group.jpeg";
+import avt_bg from "../../../assets/image/avt_bg_noel_res.jpg";
 
 const BACKCAR_VIDEO_SRC = "/video/avt_car_back_ad.mp4";
 const AVT_TEST_VIDEO_SRC = "/video/avt_test_ad.mp4";
@@ -61,13 +62,36 @@ OnDemandVideo.displayName = "OnDemandVideo";
 
 export default function MobileAVTContent() {
   const router = useRouter();
+  const [overlayOpacity, setOverlayOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / docHeight;
+
+      // 스크롤이 아래로 갈수록 투명도 감소 (1 -> 0)
+      const newOpacity = Math.max(0, 1 - scrollPercent);
+      setOverlayOpacity(newOpacity);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <PageTransition>
-      <div className="relative min-h-screen bg-black text-white">
+      <div
+        className="relative min-h-screen bg-cover bg-center text-white"
+        style={{ backgroundImage: `url(${avt_bg.src})` }}
+      >
+        <div
+          className="absolute inset-0 bg-black z-0 pointer-events-none transition-opacity duration-300"
+          style={{ opacity: overlayOpacity }}
+        />
         <BackButton onClick={() => router.back()} />
 
-        <div className="w-full px-4 pt-20 pb-20">
+        <div className="relative z-10 w-full px-4 pt-20 pb-20">
           {/* 헤더 */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-extrabold mb-3">
@@ -90,14 +114,6 @@ export default function MobileAVTContent() {
               <div className="space-y-4">
                 <p className="text-sm leading-relaxed">
                   In August 2024, I joined the <span className="text-yellow-400 font-semibold">Penn State Advanced Vehicle Team (AVT)</span>. The <span className="text-yellow-400 font-semibold">Penn State AVT's mission</span> is to offer an unparalleled learning experience for students by developing algorithms for <span className="text-yellow-400 font-semibold">autonomous driving</span>, re-engineering <span className="text-yellow-400 font-semibold">electric vehicles</span> to enhance driving range, and improving vehicle architecture while maintaining consumer demand.
-                </p>
-                
-                <p className="text-sm leading-relaxed">
-                  Since 1988, the <span className="text-yellow-400 font-semibold">Penn State AVT</span> has competed in the <span className="text-yellow-400 font-semibold">Advanced Vehicle Technology Competitions</span>, focusing on building a <span className="text-yellow-400 font-semibold">fuel-efficient vehicle</span> without compromising performance or safety.
-                </p>
-                
-                <p className="text-sm leading-relaxed">
-                  I was excited to join a team that emphasizes <span className="text-yellow-400 font-semibold">real-world applications</span> of <span className="text-yellow-400 font-semibold">cutting-edge engineering</span>. From day one, it was clear that <span className="text-yellow-400 font-semibold">collaboration</span> and <span className="text-yellow-400 font-semibold">hands-on learning</span> are central to <span className="text-yellow-400 font-semibold">AVT's culture</span>.
                 </p>
               </div>
 
@@ -127,15 +143,11 @@ export default function MobileAVTContent() {
                 <p className="text-sm leading-relaxed">
                   I developed a core pipeline component in <span className="text-yellow-400 font-semibold">ROS2</span> using <span className="text-yellow-400 font-semibold">Python</span> to integrate data from <span className="text-yellow-400 font-semibold">HDMaps</span>, <span className="text-yellow-400 font-semibold">LiDAR</span>, and <span className="text-yellow-400 font-semibold">Camera</span>. This module publishes data to the <span className="text-yellow-400 font-semibold">Control State Machine</span>, generating <span className="text-yellow-400 font-semibold">real-time vehicle trajectories</span>.
                 </p>
-                
+
                 <p className="text-sm leading-relaxed">
-                  By synthesizing multiple sensor inputs simultaneously, the system can more reliably account for <span className="text-yellow-400 font-semibold">dynamic objects</span> on the road and update trajectories at <span className="text-yellow-400 font-semibold">high frequency</span>.
+                  By synthesizing multiple sensor inputs simultaneously, the system can more reliably account for <span className="text-yellow-400 font-semibold">dynamic objects</span> on the road.
                 </p>
-                
-                <p className="text-sm leading-relaxed">
-                  Additionally, we introduced a robust <span className="text-yellow-400 font-semibold">error-handling routine</span> to ensure the pipeline gracefully recovers from unexpected sensor dropouts or corrupted data, which was crucial for <span className="text-yellow-400 font-semibold">real-world viability</span>.
-                </p>
-                
+
                 <p className="text-sm leading-relaxed">
                   (This was the <span className="text-yellow-400 font-semibold">first time</span> we tested real sensor inputs from the <span className="text-yellow-400 font-semibold">Perception team</span> directly on the car.)
                 </p>
@@ -163,13 +175,9 @@ export default function MobileAVTContent() {
                 <p className="text-sm leading-relaxed">
                   Ultimately, the car was able to operate in <span className="text-yellow-400 font-semibold">full autonomous mode</span> by recognizing <span className="text-yellow-400 font-semibold">dynamic objects</span> and <span className="text-yellow-400 font-semibold">traffic signals</span>. Our demonstration validated <span className="text-yellow-400 font-semibold">real-time data generation</span> within an 80 cm error range, highlighting the system's <span className="text-yellow-400 font-semibold">precision</span>.
                 </p>
-                
+
                 <p className="text-sm leading-relaxed">
                   The design showcase provided an opportunity for <span className="text-yellow-400 font-semibold">industry professionals</span> and <span className="text-yellow-400 font-semibold">fellow researchers</span> to offer feedback. We gained insights into refining the <span className="text-yellow-400 font-semibold">user interface</span> for remote monitoring and ensuring <span className="text-yellow-400 font-semibold">robust performance</span> under inclement weather conditions.
-                </p>
-                
-                <p className="text-sm leading-relaxed">
-                  Moving forward, we plan to expand our testing environments to different terrains and incorporate more advanced <span className="text-yellow-400 font-semibold">sensor fusion algorithms</span>. Each iteration brings us closer to a truly <span className="text-yellow-400 font-semibold">autonomous solution</span> capable of handling diverse <span className="text-yellow-400 font-semibold">real-world scenarios</span>.
                 </p>
               </div>
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 // 프로젝트 데이터 직접 정의
 interface Project {
@@ -23,7 +24,6 @@ const projects: Project[] = [
     title: "PFInspector",
     description: "Bluetooth data parsing, monitoring tool",
     tags: ["#bluetooth", "#app", "#react", "#python"],
-    websiteUrl: "https://pfsdk.yanadoofitness.com/tools",
     gitUrl: "https://github.com/9916bernard/isYafit_mobile",
     year: "2025",
   },
@@ -58,13 +58,6 @@ const projects: Project[] = [
     tags: ["#community", "#app", "#Flutter", "#Firebase", "#ios", "#android"],
     year: "2023",
   },
-  {
-    id: "certiai",
-    title: "CertiAI",
-    description: "Verifiable AI Outputs via Blockchain",
-    tags: ["#blockchain", "#python", "#research", "#LLM"],
-    isComingSoon: true,
-  },
 ];
 
 // 로고 이미지 import
@@ -73,7 +66,6 @@ import avtLogo from "../../assets/image/avt_logo.png";
 import ploLogo from "../../assets/image/plo_logo.png";
 import symptomSenseLogo from "../../assets/image/symptomsense_logo.png";
 import pfinspectorIcon from "../../assets/pfinspector_icon.png";
-import certiaiLogo from "../../assets/image/certiai_logo.jpg";
 
 const logoMap: Record<string, StaticImageData> = {
   cosmic: cosmicLogo,
@@ -81,7 +73,6 @@ const logoMap: Record<string, StaticImageData> = {
   plo: ploLogo,
   symptomsense: symptomSenseLogo,
   pfinspector: pfinspectorIcon,
-  certiai: certiaiLogo,
 };
 
 // Git 아이콘 SVG 컴포넌트
@@ -112,16 +103,17 @@ const MobileProjectSection = () => {
 
       {/* 프로젝트 카드들 */}
       <div className="w-full space-y-6">
-        {projects.map((project: Project) => {
+        {projects.map((project: Project, index: number) => {
           const isComingSoon = project.isComingSoon || project.description === "Coming Soon";
           const logo = logoMap[project.id];
 
           return (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              logo={logo} 
+            <ProjectCard
+              key={project.id}
+              project={project}
+              logo={logo}
               isComingSoon={isComingSoon}
+              index={index}
             />
           );
         })}
@@ -131,17 +123,21 @@ const MobileProjectSection = () => {
 };
 
 // 프로젝트 카드 컴포넌트
-const ProjectCard = ({ project, logo, isComingSoon }: { 
-  project: Project; 
-  logo: StaticImageData | undefined; 
+const ProjectCard = ({ project, logo, isComingSoon, index }: {
+  project: Project;
+  logo: StaticImageData | undefined;
   isComingSoon: boolean;
+  index: number;
 }) => {
   const [showAllTags, setShowAllTags] = useState(false);
   const visibleTags = showAllTags ? project.tags : project.tags.slice(0, 3);
   const hiddenTagsCount = project.tags.length - 3;
 
   return (
-    <div className="bg-gray-900 rounded-lg p-4 border border-gray-700">
+    <motion.div
+      whileTap={{ scale: 0.98 }}
+      className="bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 rounded-xl p-5 border border-gray-700 hover:border-yellow-400/50 transition-colors shadow-lg"
+    >
       {/* 프로젝트 헤더 */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
@@ -197,27 +193,29 @@ const ProjectCard = ({ project, logo, isComingSoon }: {
       <div className="flex gap-2">
         {/* Git 버튼 */}
         {project.gitUrl && (
-          <a
+          <motion.a
             href={project.gitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 px-3 py-2 border border-gray-600 text-white text-xs font-medium rounded hover:bg-gray-700 transition-colors flex items-center justify-center gap-1"
+            whileTap={{ scale: 0.95 }}
+            className="flex-1 px-3 py-2.5 border border-gray-600 text-white text-sm font-medium rounded-lg hover:bg-gray-700 hover:border-gray-500 transition-all flex items-center justify-center gap-1.5"
           >
             <GitIcon />
             Git
-          </a>
+          </motion.a>
         )}
 
         {/* Website 버튼 */}
         {project.websiteUrl && (
-          <a
+          <motion.a
             href={project.websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 px-3 py-2 bg-yellow-400 text-black text-xs font-medium rounded hover:bg-yellow-300 transition-colors text-center"
+            whileTap={{ scale: 0.95 }}
+            className="flex-1 px-3 py-2.5 bg-yellow-400 text-black text-sm font-semibold rounded-lg hover:bg-yellow-300 transition-all text-center shadow-md"
           >
             Visit
-          </a>
+          </motion.a>
         )}
 
         {/* View Details 버튼 */}
@@ -225,20 +223,23 @@ const ProjectCard = ({ project, logo, isComingSoon }: {
           isComingSoon ? (
             <button
               disabled
-              className="flex-1 px-3 py-2 bg-gray-600 text-gray-400 text-xs font-medium rounded cursor-not-allowed"
+              className="flex-1 px-3 py-2.5 bg-gray-700 text-gray-500 text-sm font-medium rounded-lg cursor-not-allowed"
             >
               Coming Soon
             </button>
           ) : (
             <Link href={`/projects/${project.id}`} className="flex-1">
-              <button className="w-full px-3 py-2 bg-yellow-400 text-black text-xs font-medium rounded hover:bg-yellow-300 transition-colors">
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className="w-full px-3 py-2.5 bg-yellow-400 text-black text-sm font-semibold rounded-lg hover:bg-yellow-300 transition-all shadow-md"
+              >
                 Details
-              </button>
+              </motion.button>
             </Link>
           )
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

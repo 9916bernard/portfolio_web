@@ -117,7 +117,7 @@ export const useResourceLoader = (options: ResourceLoaderOptions = {}) => {
       mountedRef.current = false;
       clearInterval(progressInterval);
     };
-  }, [minLoadingTime, shortLoadingTime, onComplete, updateProgress, progress]);
+  }, [minLoadingTime, shortLoadingTime, onComplete, updateProgress]);
 
   return { isLoading, progress };
 };

@@ -15,8 +15,8 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
-  const sectionIds = ['intro', 'projects', 'experiences', 'awards', 'contact'];
-  const mobileSectionIds = ['mobile-intro', 'mobile-projects', 'mobile-experience', 'mobile-awards', 'mobile-contact'];
+  const sectionIds = ['intro', 'projects', 'experiences', 'research', 'contact'];
+  const mobileSectionIds = ['mobile-intro', 'mobile-projects', 'mobile-experience', 'mobile-research', 'mobile-contact'];
   const activeSection = useScrollSpy(isMobile ? mobileSectionIds : sectionIds);
 
   const { isLoading, progress } = useResourceLoader({

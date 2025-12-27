@@ -13,7 +13,7 @@ export default function MobileSymptomSenseContent() {
 
   return (
     <PageTransition>
-      <div className="relative min-h-screen bg-black text-white">
+      <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 text-white">
         <BackButton onClick={() => router.back()} />
 
         <div className="w-full px-4 pt-20 pb-20">

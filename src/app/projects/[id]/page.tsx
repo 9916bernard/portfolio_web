@@ -7,11 +7,13 @@ import PLOContent from "../../../../components/projects/PLOContents";
 import NotFoundContent from "../../../../components/projects/NotFoundContents";
 import COSContent from "../../../../components/projects/COSContents";
 import SYMContent from "../../../../components/projects/SYMContents";
+import PFIContent from "../../../../components/projects/PFIContents";
 import MobileAVTContent from "../../../../components/projects/mobile/AVTContents";
 import MobilePLOContent from "../../../../components/projects/mobile/PLOContents";
 import MobileNotFoundContent from "../../../../components/projects/mobile/NotFoundContents";
 import MobileCOSContent from "../../../../components/projects/mobile/COSContents";
 import MobileSYMContent from "../../../../components/projects/mobile/SYMContents";
+import MobilePFIContent from "../../../../components/projects/mobile/PFIContents";
 import LoadingScreen from "../../../../components/LoadingScreen";
 import { useResourceLoader } from "../../../../hooks/useResourceLoader";
 
@@ -66,6 +68,8 @@ export default function ProjectPage() {
           return <MobileCOSContent />;
         case "symptomsense":
           return <MobileSYMContent />;
+        case "pfinspector":
+          return <MobilePFIContent />;
         default:
           return <MobileNotFoundContent />;
       }
@@ -79,6 +83,8 @@ export default function ProjectPage() {
           return <COSContent />;
         case "symptomsense":
           return <SYMContent/>;
+        case "pfinspector":
+          return <PFIContent />;
         default:
           return <NotFoundContent />;
       }

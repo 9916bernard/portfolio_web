@@ -2,7 +2,7 @@
 
 import IntroProjectsWrapper from "./IntroProjectsWrapper";
 import ExperiencesSection from "../../components/sections/experienceSection";
-import AwardsSection from "../../components/sections/awardSection";
+import ResearchSection from "../../components/sections/researchSection";
 import ContactSection from "../../components/sections/contactSection";
 
 const SectionWrapper = () => {
@@ -13,7 +13,7 @@ const SectionWrapper = () => {
 
       {/* 나머지 섹션 */}
       <ExperiencesSection />
-      <AwardsSection />
+      <ResearchSection />
       <ContactSection />
     </>
   );

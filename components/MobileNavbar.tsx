@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { FaHome, FaBriefcase, FaTrophy, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaBriefcase, FaEnvelope, FaFlask } from 'react-icons/fa';
 import { MdWork } from 'react-icons/md';
 
 interface MobileNavbarProps {
@@ -27,7 +27,7 @@ const MobileNavbar = ({ activeSection }: MobileNavbarProps) => {
     { id: 'mobile-intro', label: 'Home', icon: FaHome },
     { id: 'mobile-projects', label: 'Work', icon: MdWork },
     { id: 'mobile-experience', label: 'Experience', icon: FaBriefcase },
-    { id: 'mobile-awards', label: 'Awards', icon: FaTrophy },
+    { id: 'mobile-research', label: 'Research', icon: FaFlask },
     { id: 'mobile-contact', label: 'Contact', icon: FaEnvelope },
   ];
 
