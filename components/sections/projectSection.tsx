@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import psu_image from "../../assets/image/psu_image_res.jpg";
 
 // 프로젝트 데이터 직접 정의
@@ -88,6 +89,15 @@ const GitIcon = () => (
 );
 
 const ProjectsSection = () => {
+  useEffect(() => {
+    // 저장된 스크롤 위치가 있으면 복원
+    const savedPosition = sessionStorage.getItem('projectsScrollPosition');
+    if (savedPosition) {
+      window.scrollTo(0, parseInt(savedPosition, 10));
+      sessionStorage.removeItem('projectsScrollPosition');
+    }
+  }, []);
+
   return (
     <section
       id="projects"
@@ -180,7 +190,12 @@ const ProjectsSection = () => {
                         Coming Soon
                       </button>
                     ) : (
-                      <Link href={`/projects/${project.id}`}>
+                      <Link
+                        href={`/projects/${project.id}`}
+                        onClick={() => {
+                          sessionStorage.setItem('projectsScrollPosition', window.scrollY.toString());
+                        }}
+                      >
                         <button className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 hover:shadow-lg transition-all duration-300 text-sm md:text-base">
                           <span className="relative z-10">View Details</span>
                           <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>
@@ -279,7 +294,12 @@ const ProjectsSection = () => {
                         Coming Soon
                       </button>
                     ) : (
-                      <Link href={`/projects/${project.id}`}>
+                      <Link
+                        href={`/projects/${project.id}`}
+                        onClick={() => {
+                          sessionStorage.setItem('projectsScrollPosition', window.scrollY.toString());
+                        }}
+                      >
                         <button className="relative overflow-hidden w-full mt-1 mb-2 px-4 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 hover:shadow-lg transition-all duration-300 text-sm md:text-base">
                           <span className="relative z-10">View Details</span>
                           <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent transform rotate-12 animate-shine pointer-events-none"></span>

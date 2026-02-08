@@ -54,7 +54,7 @@ const IntroSection = () => {
           <span className="text-yellow-400">&lt;code&gt;</span>
           <span className="text-gray-400">I build </span>
           <TypingAnimation
-            texts={["android/iOS apps", "websites", "games"]}
+            texts={["apps", "websites", "games", "ai models", "blockchain frameworks", "solutions"]}
             typingSpeed={100}
             deletingSpeed={50}
             delayBetween={1500}
@@ -116,17 +116,18 @@ const IntroSection = () => {
               <span className="font-bold">Spring 2026</span>
             </li>
             <li>
-              Research: <span className="text-yellow-400">Blockchain</span> frameworks for{" "}
-              <span className="text-yellow-400">LLM traceability</span> and{" "}
-              <span className="text-yellow-400">UAV security</span>
+              Research: <span className="text-yellow-400">MPC</span> framework for{" "}
+              <span className="text-yellow-400">machine learning privacy</span> and{" "}
+              <span className="text-yellow-400">Blockchain</span> for UAV security
             </li>
             <li>
-              Projects: <span className="text-yellow-400">EPXcoin</span> blockchain,{" "}
-              <span className="text-yellow-400">BLE device inspector</span>,{" "}
-              <span className="text-yellow-400">AI health assistant</span>
+              Projects: <span className="text-yellow-400">BLE</span> device inspector,{" "}
+              <span className="text-yellow-400">Autonomous Vehicle</span> team
             </li>
             <li>
-              Awarded <span className="text-yellow-400 font-bold">DataFest Best in Show</span> for analytical insights
+              Internships: <span className="text-yellow-400">AI</span> Engineer Intern,{" "}
+              <span className="text-yellow-400">Software</span> Development Intern,{" "}
+              <span className="text-yellow-400">Game</span> Development Intern
             </li>
           </ul>
         </div>

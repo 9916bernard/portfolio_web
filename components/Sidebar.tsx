@@ -7,37 +7,66 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
-  const offsetFromBottom = 900;
   const [barPosition, setBarPosition] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [showInitialAnimation, setShowInitialAnimation] = useState(true);
 
   useEffect(() => {
     // 클라이언트 사이드에서만 실행
     setIsClient(true);
-    
+
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
-    // 초기 상태 설정
-    handleResize();
-    setBarPosition(window.innerHeight - offsetFromBottom);
 
-    const handleScroll = () => {
-      const newPosition = window.innerHeight - offsetFromBottom + window.scrollY;
+    const updateBarPosition = () => {
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+
+      // 리모컨의 총 높이 (버튼 5개 * 높이 + 간격)
+      const sidebarHeight = 5 * 48 + 4 * 16; // 약 304px
+
+      // 기존 위치 유지 (오른쪽 위): 상단에서 80px 아래
+      let newPosition = scrollY + 80;
+
+      // 하단 잘림 방지: 리모컨이 화면 밖으로 나가면 위로 올림
+      const maxPosition = scrollY + viewportHeight - sidebarHeight - 20;
+      if (newPosition > maxPosition) {
+        newPosition = maxPosition;
+      }
+
+      // 상단 잘림 방지: 최소 20px 여백
+      const minPosition = scrollY + 20;
+      if (newPosition < minPosition) {
+        newPosition = minPosition;
+      }
+
       setBarPosition(newPosition);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-    
+    // 초기 상태 설정
+    handleResize();
+    updateBarPosition();
+
+    window.addEventListener("scroll", updateBarPosition);
+    window.addEventListener("resize", () => {
+      handleResize();
+      updateBarPosition();
+    });
+
+    // 초기 애니메이션: 2번 펄스 후 사라짐 (총 약 3초)
+    const animationTimer = setTimeout(() => {
+      setShowInitialAnimation(false);
+    }, 3000);
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", updateBarPosition);
       window.removeEventListener("resize", handleResize);
+      clearTimeout(animationTimer);
     };
-  }, [offsetFromBottom]);
+  }, []);
 
   const handleLinkClick = (sectionId: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -54,7 +83,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
   };
 
   const getLinkClass = (sectionId: string) =>
-    `border border-white px-4 py-3 w-full md:w-40 text-center rounded transition font-bold ${
+    `border border-white px-5 py-3 w-full md:w-44 text-center rounded transition font-bold text-base ${
       activeSection === sectionId
         ? "bg-yellow-500 text-white shadow-lg"
         : "text-white hover:bg-white hover:text-black"
@@ -68,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
   // SSR 중에는 기본 상태로 렌더링
   if (!isClient) {
     return (
-      <div className="fixed transition-all duration-300 ease-out flex flex-col space-y-4 items-center z-50 absolute right-10 opacity-20 hover:opacity-100">
+      <div className="fixed transition-all duration-300 ease-out flex flex-col space-y-3 items-center z-50 absolute right-10 opacity-20 hover:opacity-100 top-20">
         <a href="#intro" className={getLinkClass("intro")}>
           Intro
         </a>
@@ -116,18 +145,18 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
       {/* 사이드바 메뉴 */}
       <div
         className={`
-          fixed 
-          transition-all 
-          duration-300 
-          ease-out 
-          flex 
-          flex-col 
-          space-y-4 
-          items-center 
-          z-50 
-          ${isMobile 
-            ? `top-16 right-4 w-[180px] p-4 bg-black/80 rounded-lg backdrop-blur-sm ${isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}` 
-            : 'absolute right-10 opacity-20 hover:opacity-100'
+          fixed
+          transition-all
+          duration-300
+          ease-out
+          flex
+          flex-col
+          space-y-3
+          items-center
+          z-50
+          ${isMobile
+            ? `top-16 right-4 w-[180px] p-4 bg-black/80 rounded-lg backdrop-blur-sm ${isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`
+            : `absolute right-10 ${showInitialAnimation ? 'animate-pulse-glow' : 'opacity-20 hover:opacity-100'}`
           }
         `}
         style={!isMobile ? { top: `${barPosition}px` } : {}}

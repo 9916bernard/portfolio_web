@@ -24,14 +24,15 @@ const OnDemandVideo = memo(({ src, className, style }: OnDemandVideoProps) => {
   return (
     <div className={`relative ${className || ""}`} style={style}>
       {!isPlaying ? (
-        <div className="w-full h-full aspect-video rounded-xl bg-black flex items-center justify-center">
+        <div className="w-full h-full aspect-video rounded-xl bg-gradient-to-br from-gray-900 to-black flex items-center justify-center border-2 border-gray-700">
           <button
             onClick={handlePlay}
-            className="flex items-center justify-center bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-6 transition duration-200 shadow-lg"
+            className="flex items-center justify-center bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 md:p-6 transition duration-200 shadow-lg"
+            aria-label="Play video"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-10 h-10 text-black"
+              className="w-8 h-8 md:w-10 md:h-10 text-black"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
@@ -47,6 +48,8 @@ const OnDemandVideo = memo(({ src, className, style }: OnDemandVideoProps) => {
           preload="metadata"
           className="rounded-xl w-full max-w-xl"
           style={style}
+          playsInline
+          muted
         />
       )}
     </div>
@@ -123,17 +126,17 @@ export default function PFIContent() {
                       text="This demonstration validates the app's ability to handle <strong class='text-emerald-400'>multiple device protocols</strong> and showcases the <strong class='text-emerald-400'>multilingual interface</strong> designed for international deployment."
                     />
                   </div>
-                  <div className="md:w-1/2 flex flex-col items-center">
-                    <div className="relative group/video">
+                  <div className="md:w-1/2 flex flex-col justify-center items-center">
+                    <div className="relative group/video w-full">
                       <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-green-600 rounded-2xl blur opacity-25 group-hover/video:opacity-50 transition duration-500"></div>
                       <div className="relative">
                         <OnDemandVideo
                           src={ISYAFITTEST_VIDEO_SRC}
-                          className="w-full max-w-xl"
+                          className="w-full"
                         />
                       </div>
                     </div>
-                    <p className="text-gray-400 text-sm mt-4 italic">
+                    <p className="text-gray-400 text-xs md:text-sm mt-4 italic text-center">
                       Testing PFInspector with Reborn (XQ) and Yafit_S4 (YAFITF1) protocols. English testing starts at 2:15.
                     </p>
                   </div>

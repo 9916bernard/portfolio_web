@@ -51,7 +51,7 @@ const MobileIntroSection = () => {
           <span className="text-yellow-400 text-lg font-mono">&lt;code&gt;</span>
           <span className="text-gray-300 text-lg font-mono">I build </span>
           <TypingAnimation
-            texts={["apps", "websites", "games"]}
+            texts={["apps", "websites", "games", "ai models", "blockchain frameworks", "solutions"]}
             typingSpeed={100}
             deletingSpeed={50}
             delayBetween={1500}
@@ -122,23 +122,24 @@ const MobileIntroSection = () => {
             <li className="flex items-start">
               <span className="text-yellow-400 mr-2">•</span>
               <span>
-                Research: <span className="text-yellow-400">Blockchain</span> frameworks for{" "}
-                <span className="text-yellow-400">LLM traceability</span> and{" "}
-                <span className="text-yellow-400">UAV security</span>
+                Research: <span className="text-yellow-400">MPC</span> framework for{" "}
+                <span className="text-yellow-400">machine learning privacy</span> and{" "}
+                <span className="text-yellow-400">Blockchain</span> for UAV security
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-yellow-400 mr-2">•</span>
               <span>
-                Projects: <span className="text-yellow-400">EPXcoin</span> blockchain,{" "}
-                <span className="text-yellow-400">BLE device inspector</span>,{" "}
-                <span className="text-yellow-400">AI health assistant</span>
+                Projects: <span className="text-yellow-400">BLE</span> device inspector,{" "}
+                <span className="text-yellow-400">Autonomous Vehicle</span> team
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-yellow-400 mr-2">•</span>
               <span>
-                Awarded <span className="text-yellow-400 font-bold">DataFest Best in Show</span> for analytical insights
+                Internships: <span className="text-yellow-400">AI</span> Engineer Intern,{" "}
+                <span className="text-yellow-400">Software</span> Development Intern,{" "}
+                <span className="text-yellow-400">Game</span> Development Intern
               </span>
             </li>
           </ul>

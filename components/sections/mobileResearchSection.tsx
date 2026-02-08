@@ -12,28 +12,27 @@ const publications = [
     date: "Nov 2025",
     status: "under review",
   },
-  {
-    authors: "M. Singh, Sungheon Lee",
-    title: "Local vs. Global Blockchain-Backed Zero Trust Framework for UAV Data Security",
-    venue: "37th IEEE Intelligent Vehicles Symposium (IV 2026)",
-    date: "Nov 2025",
-    status: "under review",
-  },
 ];
 
 const researchExperience = [
   {
-    title: "EPXcoin: Blockchain-enabled Electricity Exchange Mechanism",
-    role: "Undergraduate Researcher (Methodology Architect, MVP Developer)",
-    institution: "Penn State University",
-    period: "Aug 2025 – Dec 2025",
-  },
-  {
-    title: "Multi-Party Computation (MPC)",
+    title: "Privacy-Preserving Machine Learning Lab",
     role: "Undergraduate Researcher",
     institution: "Penn State University",
-    period: "Spring 2026 (Upcoming)",
-    isUpcoming: true,
+    period: "Jan 2026 – Present",
+    description: [
+      "Researching optimization strategies for Multi-Party Computation (MPC) frameworks, with focus on improving activation function approximation for privacy-preserving neural network inference.",
+    ],
+  },
+  {
+    title: "Blockchain Data Intelligence Lab",
+    role: "Undergraduate Researcher",
+    institution: "Penn State University",
+    period: "Aug 2025 – Dec 2025",
+    description: [
+      "UAV Security: Implemented blockchain-based pipeline for no-trust UAV mission operations, developed prototype, and authored technical documentation with security recommendations for Zero Trust Architecture.",
+      "EPXcoin: Developed MVP demonstrating blockchain-enabled electricity exchange mechanism, identified structural limitations, and proposed enhancements including IPFS integration for cost-efficient off-chain storage.",
+    ],
   },
 ];
 
@@ -82,35 +81,25 @@ const MobileResearchSection = () => {
             <motion.div
               key={index}
               whileTap={{ scale: 0.98 }}
-              className={`bg-gray-900 rounded-lg p-4 border ${
-                exp.isUpcoming ? "border-gray-700 active:border-blue-500" : "border-yellow-400 active:border-yellow-300"
-              }`}
+              className="bg-gray-900 rounded-lg p-4 border-2 border-yellow-400 active:border-yellow-300"
             >
               <div className="flex items-start justify-between mb-2">
                 <h3 className="text-base font-bold text-yellow-300 flex-1">
                   {exp.title}
                 </h3>
-                {exp.isUpcoming && (
-                  <motion.span
-                    className="text-xs bg-blue-500 text-white px-2 py-1 rounded-full font-semibold ml-2"
-                    animate={{
-                      scale: [1, 1.05, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    Upcoming
-                  </motion.span>
-                )}
               </div>
               <p className="text-gray-300 text-sm mb-1">{exp.role}</p>
-              <div className="flex flex-col gap-1 text-xs text-gray-400">
+              <div className="flex flex-col gap-1 text-xs text-gray-400 mb-3">
                 <span>{exp.institution}</span>
                 <span>{exp.period}</span>
               </div>
+              {exp.description && (
+                <ul className="list-disc ml-4 space-y-1 text-gray-400 text-xs">
+                  {exp.description.map((desc: string, idx: number) => (
+                    <li key={idx}>{desc}</li>
+                  ))}
+                </ul>
+              )}
             </motion.div>
           ))}
         </div>

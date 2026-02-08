@@ -6,8 +6,17 @@ import StarField from "../StarField";
 
 const experiences = [
   {
+    company: "RadSquared.ai",
+    position: "AI Engineer Intern",
+    location: "PA, United States",
+    duration: "Jan 2026 – Present",
+    details: [
+      "Developing an end-to-end pipeline to build domain-specific Small Language Models (SLMs) that outperform Large Language Models (LLMs) on specialized tasks.",
+    ],
+  },
+  {
     company: "Yanadoo",
-    position: "Developer Intern",
+    position: "Software Development Intern",
     location: "Seoul, South Korea",
     duration: "May 2025 – July 2025",
     details: [
@@ -17,7 +26,7 @@ const experiences = [
   },
   {
     company: "Maf Games",
-    position: "Developer Intern",
+    position: "Game Development Intern",
     location: "Seoul, South Korea",
     duration: "May 2024 – Aug 2024",
     details: [
